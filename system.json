@@ -2,14 +2,14 @@
   "id": "castles-and-crusades",
   "title": "Castles & Crusades: The Role Playing Game - Foundry v14 Update",
   "description": "Troll Lord Games presents Castles &amp; Crusades: The Role Playing Game for FoundryVTT! To learn about additional adventures please visit https://www.trolllord.com/",
-  "version": "2.0.0",
+  "version": "2026.04.21",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
   },
   "url": "https://github.com/DT357/foundryvtt-castles-and-crusades-v14",
-  "manifest": "https://gitlab.com/api/v4/projects/36291450/packages/generic/castles-and-crusades/latest/system.json",
-  "download": "https://gitlab.com/troll-lord/foundry-vtt/ruleset/castles-and-crusades/-/releases/v1.0.5/downloads/castles-and-crusades-v1.0.5.zip",
+  "manifest": "https://github.com/DT357/foundryvtt-castles-and-crusades-v14/download/v2026.04.21/system.json",
+  "download": "https://github.com/DT357/foundryvtt-castles-and-crusades-v14/download/v2026.04.21/castles-and-crusades-updated.zip",
   "license": "LICENSE.txt",
   "authors": [
     {
