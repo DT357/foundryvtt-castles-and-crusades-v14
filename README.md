@@ -28,7 +28,7 @@ The system has been updated to run cleanly against current Foundry core releases
 
 The system includes updates to align with Foundry's newer application and sheet framework direction:
 
-- a V2-oriented sheet layer in [v2-sheets.js](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/v2-sheets.js)
+- a V2-oriented sheet layer in v2-sheets.js
 - updated actor and item sheet template routing for the active system id
 - modernized sheet rendering and registration behavior for current Foundry versions
 - continued support for character, monster, and item sheet workflows under the newer framework model
@@ -44,11 +44,11 @@ In addition to compatibility work, the current system includes cleanup and parit
 
 ## Key Files
 
-- [system.json](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/system.json): system manifest and compatibility metadata
-- [v2-sheets.js](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/v2-sheets.js): current V2-oriented sheet/application layer
-- [castles_crusades.js](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/castles_crusades.js): bundled runtime logic
-- [styles/castles_crusades.css](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/styles/castles_crusades.css): system stylesheet and sheet presentation rules
-- [templates](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/templates): actor, monster, item, and partial templates
+- system.json: system manifest and compatibility metadata
+- v2-sheets.js: current V2-oriented sheet/application layer
+- castles_crusades.js: bundled runtime logic
+- styles/castles_crusades.css: system stylesheet and sheet presentation rules
+- templates: actor, monster, item, and partial templates
 
 ## Installation
 
@@ -59,6 +59,4 @@ Install the system in Foundry under:
 Because the system retains the original id and folder name, official Troll Lord Games modules and other existing integrations that target `castles-and-crusades` can continue to resolve the expected system identifier and paths.
 
 ## Notes
-
-- The preserved legacy reference snapshot remains outside this folder as `castles-crusades-old`.
-- The V2 migration planning notes are documented in [CASTLES-CRUSADES-V2-FRAMEWORK-UPGRADE-PLAN.md](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/CASTLES-CRUSADES-V2-FRAMEWORK-UPGRADE-PLAN.md).
+I did use Codex to help with this upgrade.  If you get bent out of shape about AI usage in a programming context, just move along and stick to the Foundry v12 system.
