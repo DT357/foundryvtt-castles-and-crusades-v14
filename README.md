@@ -44,11 +44,11 @@ In addition to compatibility work, the current system includes cleanup and parit
 
 ## Key Files
 
-- [system.json](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/system.json): system manifest and compatibility metadata
-- [v2-sheets.js](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/v2-sheets.js): current V2-oriented sheet/application layer
-- [castles_crusades.js](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/castles_crusades.js): bundled runtime logic
-- [styles/castles_crusades.css](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/styles/castles_crusades.css): system stylesheet and sheet presentation rules
-- [templates](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/templates): actor, monster, item, and partial templates
+- system.json: system manifest and compatibility metadata
+- v2-sheets.js: current V2-oriented sheet/application layer
+- castles_crusades.js: bundled runtime logic
+- styles/castles_crusades.css: system stylesheet and sheet presentation rules
+- templates: actor, monster, item, and partial templates
 
 ## Installation
 
@@ -60,5 +60,3 @@ Because the system retains the original id and folder name, official Troll Lord 
 
 ## Notes
 
-- The preserved legacy reference snapshot remains outside this folder as `castles-crusades-old`.
-- The V2 migration planning notes are documented in [CASTLES-CRUSADES-V2-FRAMEWORK-UPGRADE-PLAN.md](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/CASTLES-CRUSADES-V2-FRAMEWORK-UPGRADE-PLAN.md).
