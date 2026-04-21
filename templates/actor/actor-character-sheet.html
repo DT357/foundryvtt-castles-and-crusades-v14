@@ -1,0 +1,156 @@
+<form class="{{cssClass}} {{actor.type}} tlgbackground flexcol" autocomplete="off">
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'TLGCC.Name'}}"/>
+      </h1>
+      <div class="resources grid grid-5col">
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize 'TLGCC.HitPoints'}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.hitPoints.value" value="{{system.hitPoints.value}}" data-dtype="Number" width="50px"/>
+            <span class="flexshrink flex-align-center">&nbsp;/&nbsp;</span>
+            <input type="text" name="system.hitPoints.max" value="{{system.hitPoints.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize 'TLGCC.Level'}}</label>
+          <input type="text" name="system.level.value" value="{{system.level.value}}" data-dtype="Number"/>
+        </div>
+
+        <div class="resource flex-group-center grid-span-2">
+          <label class="resource-label">{{localize 'TLGCC.Class'}}</label>
+          <input type="text" name="system.class.value" value="{{system.class.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize 'TLGCC.Race'}}</label>
+          <input type="text" name="system.race.value" value="{{system.race.value}}" data-dtype="String"/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Header Details Row --}}
+  <div class="sheet-header">
+    <div class="header-fields">
+      <div class="resources grid grid-6col">
+        <div class="resource flex-group-center grid-span-2">
+          <label class="resource-label">{{localize 'TLGCC.Deity'}}</label>
+          <input type="text" name="system.deity.value" value="{{system.deity.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center grid-span-2">
+          <label class="resource-label">{{localize 'TLGCC.Title'}}</label>
+          <input type="text" name="system.title.value" value="{{system.title.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize 'TLGCC.Alignment'}}</label>
+          <input type="text" name="system.alignment.value" value="{{system.alignment.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize 'TLGCC.ExperiencePointsAbbr'}} / {{localize 'TLGCC.NextLevel'}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.xp.value" value="{{system.xp.value}}" data-dtype="Number"/>
+            <span class="flexshrink flex-align-center">&nbsp;/&nbsp;</span>
+            <input type="text" name="system.xp.next" value="{{system.xp.next}}" data-dtype="Number"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="combat">{{localize 'TLGCC.CombatTab'}}</a>
+    <a class="item" data-tab="features">{{localize 'TLGCC.FeaturesTab'}}</a>
+    <a class="item" data-tab="items">{{localize 'TLGCC.ItemsTab'}}</a>
+    <a class="item" data-tab="spells">{{localize 'TLGCC.SpellsTab'}}</a>
+    <a class="item" data-tab="description">{{localize 'TLGCC.DescriptionTab'}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Combat Tab --}}
+    <div class="tab combat" data-group="primary" data-tab="combat">
+      <div class="grid grid-6col flexrow">
+        {{#each system.abilities as |ability key|}}
+        <div class="ability abilitybox flex-group-center" style="max-width: 135px">
+          <label for="system.abilities.{{key}}.value" class="ability-label rollable flexlarge align-center"
+                 title="{{localize 'TLGCC.AbilityCheck'}}"
+                 data-roll="d20+@abilities.{{key}}.bonus+@level.value"
+                 data-label="<b>{{ability.label}}</b> Ability CHECK. <br><b>Prime: <em>{{ability.ccprimary}}</em></b>">
+            {{ability.label}}
+          </label>
+          <div class="break"></div>
+          <span class="abilityscore">
+            <input class="ability-score-input" style="width: 30px; min-width: 30px; max-width: 30px; padding: 1px 3px; text-align: center;" type="text" name="system.abilities.{{key}}.value"
+                   title="{{localize (concat 'TLGCC.Ability' (toCapitalCase key) 'Save')}}"
+                   value="{{ability.value}}" data-dtype="Number"/>
+            <span
+                  title="{{localize (concat 'TLGCC.Ability' (toCapitalCase key) 'Save')}}"
+                  class="ability-mod ability-button rollable"
+                  data-roll="d20+@abilities.{{key}}.bonus+@level.value"
+                  data-label="<b>{{ability.label}}</b> Ability SAVE. <br><b>Prime: <em>{{ability.ccprimary}}</em></b>">
+              {{numberFormat ability.bonus decimals=0 sign=true}}
+            </span>
+          </span>
+          <span class="ability-prime-row">
+            {{{localize 'TLGCC.primeCheck'}}}
+            <input class="ability-prime-checkbox" type="checkbox"
+                   title="{{localize 'TLGCC.primeCheckhover'}}"
+                   name="system.abilities.{{key}}.ccprimary" {{checked ability.ccprimary}}/>
+          </span>
+        </div>
+        {{/each}}
+      </div>
+
+      <section class="grid grid-3col">
+        <aside class="sidebar">
+          <div class="resource-pool flexrow flex-group-center" style="margin-bottom: -12px">
+            <h4>{{localize 'TLGCC.resourceTracker'}}</h4>
+          </div>
+          <hr/>
+          {{#each system.resources as |resource key|}}
+          <div class="ability flexrow flex-group-center">
+            <input class="flex-center" type="text" name="system.resources.{{key}}.name"
+                   value="{{localize resource.name}}" data-dtype="String"/>
+            <input style="width: 30px" class="flex-right" type="text"
+                   name="system.resources.{{key}}.value" value="{{resource.value}}" data-dtype="Number"/>
+          </div>
+          {{/each}}
+        </aside>
+
+        {{!-- For the main combat list, span the right two columns --}}
+        <section class="main grid-span-2">
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-combat.html"}}
+        </section>
+      </section>
+    </div>
+
+    {{!-- Description Tab --}}
+    <div class="tab biography" data-group="primary" data-tab="description">
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-description.html"}}
+    </div>
+
+    {{!-- Owned Items Tab --}}
+    <div class="tab items" data-group="primary" data-tab="items">
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-items.html"}}
+    </div>
+
+    {{!-- Owned Spells Tab --}}
+    <div class="tab spells" data-group="primary" data-tab="spells">
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-spells.html"}}
+    </div>
+
+    {{!-- Features Tab --}}
+    <div class="tab features flexcol" data-group="primary" data-tab="features">
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-features.html"}}
+    </div>
+  </section>
+</form>

@@ -1,0 +1,131 @@
+<form autocomplete="off" class="{{cssClass}}">
+  <header class="sheet-header">
+    <img
+      alt="{{item.name}}"
+      class="profile-img"
+      data-edit="img"
+      src="{{item.img}}"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          placeholder="{{localize 'TLGCC.Name'}}"
+          type="text"
+          value="{{item.name}}"
+        />
+      </h1>
+      <div class="grid grid-4col">
+        <div class="resource">
+          <label class="resource-label" for="system.price.value"
+          >{{localize 'TLGCC.Price'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.price.value"
+            name="system.price.value"
+            type="text"
+            value="{{system.price.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.weight.value"
+          >{{localize 'TLGCC.Weight'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.weight.value"
+            name="system.weight.value"
+            type="text"
+            value="{{system.weight.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.itemev.value"
+          >{{localize 'TLGCC.ItemEV'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.itemev.value"
+            name="system.itemev.value"
+            type="text"
+            value="{{system.itemev.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.damage.value"
+          >{{localize 'TLGCC.Damage'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.damage.value"
+            name="system.damage.value"
+            type="text"
+            value="{{system.damage.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.bonusAb.value"
+          >{{localize 'TLGCC.BonusAttackBonus'}}</label
+          >
+          <input
+            data-dtype="Number"
+            id="system.bonusAb.value"
+            name="system.bonusAb.value"
+            type="text"
+            value="{{system.bonusAb.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.range.value"
+          >{{localize 'TLGCC.Range'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.range.value"
+            name="system.range.value"
+            type="text"
+            value="{{system.range.value}}"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Description Tab --}}
+    <div class="description">
+      <div class="description-header">
+        <label class="resource-label">{{localize 'TLGCC.DescriptionTab'}}</label>
+        {{#unless editingDescription}}
+          {{#if editable}}
+            <button
+              type="button"
+              class="editor-edit control-button unbutton"
+              data-target="system.description"
+              aria-label="{{localize 'TLGCC.DescriptionTab'}}"
+            >
+              <i class="fa-solid fa-pen-to-square" inert></i>
+            </button>
+          {{/if}}
+        {{/unless}}
+      </div>
+      <div class="description-editor">
+        {{#if editingDescription}}
+          <prose-mirror
+            name="{{editingDescription.target}}"
+            value="{{editingDescription.value}}"
+            document-uuid="{{item.uuid}}"
+            class="sheet-description-prosemirror"
+          ></prose-mirror>
+        {{else}}
+          <div class="editor">
+            <div class="editor-content">{{{enriched.description}}}</div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+</form>

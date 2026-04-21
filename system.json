@@ -1,0 +1,74 @@
+{
+  "id": "castles-and-crusades",
+  "title": "Castles & Crusades: The Role Playing Game - Foundry v14 Update",
+  "description": "Troll Lord Games presents Castles &amp; Crusades: The Role Playing Game for FoundryVTT! To learn about additional adventures please visit https://www.trolllord.com/",
+  "version": "2.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "url": "https://github.com/DT357/foundryvtt-castles-and-crusades-v14",
+  "manifest": "https://gitlab.com/api/v4/projects/36291450/packages/generic/castles-and-crusades/latest/system.json",
+  "download": "https://gitlab.com/troll-lord/foundry-vtt/ruleset/castles-and-crusades/-/releases/v1.0.5/downloads/castles-and-crusades-v1.0.5.zip",
+  "license": "LICENSE.txt",
+  "authors": [
+    {
+      "name": "Troll Lord Games",
+      "url": "https://trolllord.com/castles-crusades/"
+    },
+    {
+      "name": "Ken Taylor",
+      "discord": "KillerWabbit#3711",
+      "url": "https://gitlab.com/KillerWabbit"
+    },
+    {
+      "name": "Michael Pflugrad",
+      "discord": "42datasquirrels#7292",
+      "url": "https://www.4d2gaming.com"
+    },
+    {
+      "name": "Dan Tesch",
+      "discord": "dt357",
+      "url": "https://www.youtube.com/@DanTesch"
+    }
+  ],
+  "esmodules": [
+    "castles_crusades.js",
+    "v2-sheets.js"
+  ],
+  "styles": [
+    "styles/castles_crusades.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json",
+      "flags": {}
+    }
+  ],
+  "media": [
+    {
+      "type": "cover",
+      "loop": false,
+      "flags": {}
+    },
+    {
+      "type": "setup",
+      "url": "systems/castles-and-crusades/assets/cnc-repo.webp",
+      "thumbnail": "systems/castles-and-crusades/assets/cnc-thumbnail.webp"
+    }
+  ],
+  "initiative": "1d10",
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "hitPoints"
+}

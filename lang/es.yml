@@ -1,0 +1,195 @@
+# Actor Types
+TYPES.Actor.character: Personaje
+TYPES.Actor.monster: Enemigo
+
+# Item Types
+TYPES.Item.item: Equipo
+TYPES.Item.weapon: Arma
+TYPES.Item.armor: Armadura
+TYPES.Item.spell: Hechizo
+TYPES.Item.feature: Habilidad Especial
+
+# Tab Names
+TLGCC.CombatTab: Combate
+TLGCC.DescriptionTab: Descripción
+TLGCC.ItemsTab: Equipamiento
+TLGCC.SpellsTab: Hechizos
+TLGCC.FeaturesTab: Habilidades
+TLGCC.AttributesTab: Atributos
+
+# Abilities
+TLGCC.AbilityStr: FUE
+TLGCC.AbilityCon: CON
+TLGCC.AbilityDex: DES
+TLGCC.AbilityInt: INT
+TLGCC.AbilityWis: SAB
+TLGCC.AbilityCha: CAR
+
+# Ability Abbreviations
+TLGCC.AbilityStrAbbr: FUE
+TLGCC.AbilityConAbbr: CON
+TLGCC.AbilityDexAbbr: DES
+TLGCC.AbilityIntAbbr: INT
+TLGCC.AbilityWisAbbr: SAB
+TLGCC.AbilityChaAbbr: CAR
+
+# Saving Throws
+TLGCC.AbilityStrSave: Tirada de salvación contra Parálisis y Presa
+TLGCC.AbilityDexSave: Tirada de salvación contra Armas de Aliento y Trampas
+TLGCC.AbilityConSave: Tirada de salvación contra Enfermedad, Drenaje de Energía y Veneno
+TLGCC.AbilityIntSave: Tirada de salvación contra Magia Arcana y Ilusiones
+TLGCC.AbilityWisSave: Tirada de salvación contra Confusión, Magia Divina, Ataque de mirada, Petrificación, Polimorfismo
+TLGCC.AbilityChaSave: Tirada de salvación contra Ataque Mortal, Encanto, Miedo
+TLGCC.AbilityCheck: Realizar una prueba usando esta habilidad
+
+# Resources
+TLGCC.resourceTracker: Recursos
+TLGCC.resourceTrackerhover: Usa estas 5 casillas para controlar distintos recursos de tu personaje.
+TLGCC.Resource1: Recurso 1
+TLGCC.Resource2: Recurso 2
+TLGCC.Resource3: Recurso 3
+TLGCC.Resource4: Recurso 4
+TLGCC.Resource5: Recurso 5
+
+# Save Types
+TLGCC.SaveDeath: Moral
+TLGCC.SaveWands: Salvación M
+TLGCC.SaveParalysis: Salvación F
+TLGCC.SaveBreath: Recurso 1
+TLGCC.SaveSpells: Recurso 2
+
+# Currency
+TLGCC.Platinum: Platino
+TLGCC.Gold: Oro
+TLGCC.Electrum: Electrum
+TLGCC.Silver: Plata
+TLGCC.Copper: Cobre
+
+# Prime Attributes
+TLGCC.primeCheck: <i>Primaria</i>
+TLGCC.primeCheckhover: Marcar esta casilla para habilitar como Primaria
+
+# Combat Stats
+TLGCC.ArmorClass: Clase de Armadura
+TLGCC.ArmorClassAbbr: CA
+TLGCC.ACtitle: CA=10+Armadura+Escudo+Mod. Atributo+Misc. ¡Los cascos van por separado!
+TLGCC.AChovertext: La CA se calcula manualmente con los objetos listados en la pestaña de Combate
+TLGCC.Attack: Atacar
+TLGCC.AttackBonus: Bonus Ataque
+TLGCC.AttackBonusAbbr: BA
+TLGCC.BtHtitle: d20 + BA + Mod. Atributo + Misc
+TLGCC.BtHAbbr: BA
+TLGCC.BonusAttackBonus: BA
+TLGCC.Damage: Daño
+TLGCC.DamageAbbr: Daño
+TLGCC.HitDice: Dados de Golpe
+TLGCC.HitDiceAbbr: DG
+TLGCC.HitPoints: PG
+TLGCC.HitPointsAbbr: PG
+TLGCC.HitPointsCurrent: PG Actuales
+TLGCC.HitPointsMax: PG Máximos
+TLGCC.hdSize: DG Clase
+TLGCC.Melee: CaC
+TLGCC.Ranged: A distancia
+
+# Monster Specific
+TLGCC.MonsterHitDice: DG
+TLGCC.MonsterHitDiceHover: Número de dados de golpe
+TLGCC.MonsterINT: INT
+TLGCC.MonsterType: Tipo
+TLGCC.MonsterSaves: Salvación
+TLGCC.MonsterSavesHover: '(F)ísica: FUE,DES,CON. (M)entales: CAR,SAB,INT. Tirada d20 + DG'
+TLGCC.MonsterNumberAppearing: Cantidad
+TLGCC.MonsterTreasureType: Valor Tesoro
+TLGCC.MonsterSanity: Cordura
+TLGCC.MonsterSanityTooltip: Cuando un personaje se encuentra con este monstruo por primera vez, debe hacer una tirada de salvación de sabiduría contra el ND del monstruo. El éxito significa que sufren daño a su Cordura igual al primer número en la calificación, el fracaso significa que sufren daño igual al segundo número.
+
+# Monster Environment and Combat
+TLGCC.Attacks: Ataques
+TLGCC.AttacksTooltip: Lista de ataques naturales y habilidades especiales de combate
+TLGCC.Biome: Bioma
+TLGCC.BiomeTooltip: El tipo general de ecosistema o entorno donde vive este monstruo
+TLGCC.Climate: Clima
+TLGCC.ClimateTooltip: Las condiciones meteorológicas y rangos de temperatura donde se puede encontrar este monstruo
+
+# Character Attributes
+TLGCC.Age: Edad
+TLGCC.Alignment: Disposición
+TLGCC.Background: Trasfondo
+TLGCC.Class: Clase
+TLGCC.Height: Altura
+TLGCC.Level: Nivel
+TLGCC.Movement: Movimiento
+TLGCC.Name: Nombre
+TLGCC.Race: Raza
+TLGCC.Religion: Religión
+TLGCC.Sex: Género
+TLGCC.Size: Tamaño
+TLGCC.Title: Título
+TLGCC.Origin: Origen
+TLGCC.Deity: Deidad
+
+# Experience
+TLGCC.ExperiencePoints: Puntos de Experiencia
+TLGCC.ExperiencePointsAbbr: XP
+TLGCC.NextLevel: Pr. nivel
+
+# Equipment
+TLGCC.CarriedWeight: Carga
+TLGCC.ItemEV: VE
+TLGCC.Price: Precio
+TLGCC.Quantity: Cantidad
+TLGCC.Range: Alcance
+TLGCC.Weight: Peso
+TLGCC.WeightMeasure: kgs.
+TLGCC.Valuables: Valores
+TLGCC.ValuablesPlaceholder: Gemas, joyas, objetos de arte...
+
+# Spells
+TLGCC.SpellDuration: Duración
+TLGCC.SpellPrepared: Preparado
+TLGCC.SpellRange: Alcance
+TLGCC.SaveValue: TS
+TLGCC.SpellComponents: Comp
+TLGCC.SpellCastTime: TL
+TLGCC.SpellDamage: Daño
+TLGCC.SpellComponent: Componentes
+TLGCC.SpellResistance: RC
+TLGCC.SpellsPerLevel: Hechizos
+TLGCC.SpellLevel: Nivel
+TLGCC.spellSummary: Descripción
+TLGCC.spellsKnown: Hechizos conocidos
+TLGCC.spellsKnownhover: Combinación de todos los hechizos por día + el Bonus de lanzamiento para obtener este número
+
+# Features
+TLGCC.FeatureTitle: Texto flotante sobre característica
+TLGCC.SpecialAbility: Habilidades Especiales
+
+# Effects
+TLGCC.EffectCreate: Crear Efecto
+TLGCC.EffectDelete: Borrar Efecto
+TLGCC.EffectDuration: Duración
+TLGCC.EffectEdit: Editar Efecto
+TLGCC.EffectSource: Fuente
+TLGCC.EffectToggle: Activar Efecto
+
+# Descriptions
+TLGCC.Appearance: Apariencia
+TLGCC.Notes: Biografía y Notas
+
+# UI Elements
+TLGCC.Add: Añadir
+TLGCC.Unknown: Desconocido
+TLGCC.Formula: Fórmula de Tirada
+TLGCC.language: Idiomas
+
+# System Settings
+TLGCC.Settings.ShowDetailedFormulas:
+  Name: Mostrar Fórmulas Detalladas
+  Hint: Muestra las fórmulas detalladas en la hoja de personaje
+TLGCC.Settings.LogLevel:
+  Name: Nivel de Log
+  Hint: Nivel de detalle de los mensajes de log
+TLGCC.Settings.UseMinimalStatusEffects:
+  Name: Usar Efectos de Estado Mínimos
+  Hint: Si está activado, solo muestra los iconos de estado 'Muerto' y 'Inconsciente' en el HUD del token

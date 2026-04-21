@@ -1,0 +1,168 @@
+<section class="resources grid grid-5col">
+  <div class="resource flex-group-center">
+    <label for="system.size.value" class="resource-label"
+      >{{localize 'TLGCC.Size'}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.size.value"
+        name="system.size.value"
+        value="{{system.size.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="resource flex-group-center">
+    <label for="system.height.value" class="resource-label"
+      >{{localize 'TLGCC.Height'}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.height.value"
+        name="system.height.value"
+        value="{{system.height.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="resource flex-group-center">
+    <label for="system.sex.value" class="resource-label"
+      >{{localize system.sex.label}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.sex.value"
+        name="system.sex.value"
+        value="{{system.sex.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="resource flex-group-center">
+    <label for="system.weight.value" class="resource-label"
+      >{{localize system.weight.label}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.weight.value"
+        name="system.weight.value"
+        value="{{system.weight.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="resource flex-group-center">
+    <label for="system.age.value" class="resource-label"
+      >{{localize system.age.label}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.age.value"
+        name="system.age.value"
+        value="{{system.age.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="resource flex-group-center grid-span-3">
+    <label for="system.language.value" class="resource-label"
+      >{{localize 'TLGCC.language'}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.language.value"
+        name="system.language.value"
+        value="{{system.language.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="resource flex-group-center grid-span-2">
+    <label for="system.origin.value" class="resource-label"
+      >{{localize system.origin.label}}</label
+    >
+    <div class="resource-content flexrow flex-center flex-between">
+      <input
+        type="text"
+        id="system.origin.value"
+        name="system.origin.value"
+        value="{{system.origin.value}}"
+        data-dtype="String"
+      />
+    </div>
+  </div>
+</section>
+<div class="grid grid-2col">
+  <div class="flex-group-left" style="border: 1px black">
+    <div class="description-header">
+      <h2>{{localize 'TLGCC.Appearance'}}</h2>
+      {{#ifeq editingDescription.target "system.appearance"}}
+      {{else}}
+        {{#if editable}}
+          <button
+            type="button"
+            class="editor-edit control-button unbutton"
+            data-target="system.appearance"
+            aria-label="{{localize 'TLGCC.Appearance'}}"
+          >
+            <i class="fa-solid fa-pen-to-square" inert></i>
+          </button>
+        {{/if}}
+      {{/ifeq}}
+    </div>
+    <div class="description-editor">
+      {{#ifeq editingDescription.target "system.appearance"}}
+        <prose-mirror
+          name="{{editingDescription.target}}"
+          value="{{editingDescription.value}}"
+          document-uuid="{{actor.uuid}}"
+          class="sheet-description-prosemirror"
+        ></prose-mirror>
+      {{else}}
+        <div class="editor">
+          <div class="editor-content">{{{enriched.appearance}}}</div>
+        </div>
+      {{/ifeq}}
+    </div>
+  </div>
+  <div class="flex-group-left">
+    <div class="description-header">
+      <h2 title="Click the pencil icon at far right to edit.">
+        {{localize 'TLGCC.Notes'}}
+      </h2>
+      {{#ifeq editingDescription.target "system.biography"}}
+      {{else}}
+        {{#if editable}}
+          <button
+            type="button"
+            class="editor-edit control-button unbutton"
+            data-target="system.biography"
+            aria-label="{{localize 'TLGCC.Notes'}}"
+          >
+            <i class="fa-solid fa-pen-to-square" inert></i>
+          </button>
+        {{/if}}
+      {{/ifeq}}
+    </div>
+    <div class="description-editor">
+      {{#ifeq editingDescription.target "system.biography"}}
+        <prose-mirror
+          name="{{editingDescription.target}}"
+          value="{{editingDescription.value}}"
+          document-uuid="{{actor.uuid}}"
+          class="sheet-description-prosemirror"
+        ></prose-mirror>
+      {{else}}
+        <div class="editor">
+          <div class="editor-content">{{{enriched.biography}}}</div>
+        </div>
+      {{/ifeq}}
+    </div>
+  </div>
+</div>

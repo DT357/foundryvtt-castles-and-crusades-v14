@@ -1,0 +1,172 @@
+<form autocomplete="off" class="{{cssClass}} {{actor.type}} flexcol">
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" data-edit="img" height="100" src="{{actor.img}}" title="{{actor.name}}" width="100" />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" placeholder="{{localize 'TLGCC.Name'}}" type="text" value="{{actor.name}}" />
+      </h1>
+
+      <div class="resources grid grid-5col">
+        <div class="resource flex-group-center">
+          <label class="resource-label" title="{{localize 'TLGCC.MonsterHitDiceHover'}}">{{localize "TLGCC.Level"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="Number" name="system.hitDice.number" type="text" value="{{system.hitDice.number}}" />
+            <input data-dtype="String" name="system.hitDice.size" type="text" value="{{system.hitDice.size}}" />
+            <input data-dtype="Number" name="system.hitDice.mod" type="text" value="{{system.hitDice.mod}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize 'TLGCC.HitPointsAbbr'}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="Number" title="{{localize 'TLGCC.HitPointsCurrent'}}" name="system.hitPoints.value" type="text" value="{{system.hitPoints.value}}" />
+            <span class="sep">/</span> 
+            <input data-dtype="Number" title="{{localize 'TLGCC.HitPointsMax'}}" name="system.hitPoints.max" type="text" value="{{system.hitPoints.max}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label rollable" data-roll-type="monster-save" title="{{localize 'TLGCC.MonsterSavesHover'}}">{{localize "TLGCC.MonsterSaves"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.msaves.value" type="text" value="{{system.msaves.value}}" title="{{localize 'TLGCC.MonsterSavesHover'}}"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.MonsterNumberAppearing"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.numberAppearing.value" type="text" value="{{system.numberAppearing.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.MonsterINT"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.monsterINT.value" type="text" value="{{system.monsterINT.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.MonsterTreasureType"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.treasureType.value" type="text" value="{{system.treasureType.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.ExperiencePointsAbbr"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.xp.value" type="text" value="{{system.xp.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.Alignment"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.alignment.value" type="text" value="{{system.alignment.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.Size"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.size.value" type="text" value="{{system.size.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label">{{localize "TLGCC.MonsterType"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.type.value" type="text" value="{{system.type.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label class="resource-label" title="{{localize 'TLGCC.AttacksTooltip'}}">{{localize "TLGCC.Attacks"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.attacks.value" type="text" value="{{system.attacks.value}}" title="{{system.attacks.value}}" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center" style="grid-column: span 2;">
+          <label class="resource-label" title="{{localize 'TLGCC.BiomeTooltip'}}">{{localize "TLGCC.Biome"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.biome.value" type="text" value="{{system.biome.value}}" title="{{system.biome.value}}" style="width: 100%;" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center" style="grid-column: span 2;">
+          <label class="resource-label" title="{{localize 'TLGCC.ClimateTooltip'}}">{{localize "TLGCC.Climate"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input data-dtype="String" name="system.climate.value" type="text" value="{{system.climate.value}}" title="{{system.climate.value}}" style="width: 100%;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="combat">{{localize 'TLGCC.CombatTab'}}</a>
+    <a class="item" data-tab="spells">{{localize 'TLGCC.SpellsTab'}}</a>
+    <a class="item" data-tab="description">{{localize 'TLGCC.DescriptionTab'}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Combat Tab --}}
+    <div class="tab combat" data-group="primary" data-tab="combat">
+      <section class="grid grid-3col">
+        
+        
+        {{!-- Combat Stats --}}
+        <section class="main grid-span-3">
+      {{> "systems/castles-and-crusades/templates/actor/parts/monster-combat.html"}}
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-features.html"}}
+        </section>
+      </section>
+    </div>
+
+    {{!-- Spells Tab --}}
+    <div class="tab spells" data-group="primary" data-tab="spells">
+      {{> "systems/castles-and-crusades/templates/actor/parts/actor-spells.html"}}
+    </div>
+
+    {{!-- Description Tab --}}
+    <div class="tab biography" data-group="primary" data-tab="description">
+      <div class="grid grid-1col">
+        <div class="description-header">
+          <h2>{{localize 'TLGCC.DescriptionTab'}}</h2>
+          {{#ifeq editingDescription.target "system.biography"}}
+          {{else}}
+            {{#if editable}}
+              <button
+                type="button"
+                class="editor-edit control-button unbutton"
+                data-target="system.biography"
+                aria-label="{{localize 'TLGCC.DescriptionTab'}}"
+              >
+                <i class="fa-solid fa-pen-to-square" inert></i>
+              </button>
+            {{/if}}
+          {{/ifeq}}
+        </div>
+        <div class="description-editor">
+          {{#ifeq editingDescription.target "system.biography"}}
+            <prose-mirror
+              name="{{editingDescription.target}}"
+              value="{{editingDescription.value}}"
+              document-uuid="{{actor.uuid}}"
+              class="sheet-description-prosemirror"
+            ></prose-mirror>
+          {{else}}
+            <div class="editor">
+              <div class="editor-content">{{{enriched.biography}}}</div>
+            </div>
+          {{/ifeq}}
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

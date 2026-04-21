@@ -1,0 +1,72 @@
+{{!-- This template is a fallback for when items don't have more specific
+templates. --}} {{!-- Generally, you'll want to make more specific templates
+when possible. --}}
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{item.name}}"
+          placeholder="{{localize 'TLGCC.Name'}}"
+        />
+      </h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description"
+      >{{localize 'TLGCC.DescriptionTab'}}</a
+    >
+    <a class="item" data-tab="attributes">{{localize 'TLGCC.AttributesTab'}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Description Tab --}}
+    <div class="tab" data-group="primary" data-tab="description">
+      <div class="description-header">
+        <label class="resource-label">{{localize 'TLGCC.DescriptionTab'}}</label>
+        {{#unless editingDescription}}
+          {{#if editable}}
+            <button
+              type="button"
+              class="editor-edit control-button unbutton"
+              data-target="system.description"
+              aria-label="{{localize 'TLGCC.DescriptionTab'}}"
+            >
+              <i class="fa-solid fa-pen-to-square" inert></i>
+            </button>
+          {{/if}}
+        {{/unless}}
+      </div>
+      <div class="description-editor">
+        {{#if editingDescription}}
+          <prose-mirror
+            name="{{editingDescription.target}}"
+            value="{{editingDescription.value}}"
+            document-uuid="{{item.uuid}}"
+            class="sheet-description-prosemirror"
+          ></prose-mirror>
+        {{else}}
+          <div class="editor">
+            <div class="editor-content">{{{enriched.description}}}</div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      {{!-- As you add new fields, add them in here! --}}
+    </div>
+  </section>
+</form>

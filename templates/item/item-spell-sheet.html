@@ -1,0 +1,213 @@
+<form autocomplete="off" class="{{cssClass}}">
+  <header class="sheet-header">
+    <img
+      alt="{{item.name}}"
+      class="profile-img"
+      data-edit="img"
+      src="{{item.img}}"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          placeholder="{{localize 'TLGCC.Name'}}"
+          type="text"
+          value="{{item.name}}"
+        />
+      </h1>
+      <div class="grid grid-5col">
+        <div class="resource">
+          <label class="resource-label" for="system.cast.value"
+          >{{localize 'TLGCC.SpellCastTime'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.cast.value"
+            name="system.cast.value"
+            type="text"
+            value="{{system.cast.value}}"
+          />
+        </div>
+
+        <div class="resource">
+          <label class="resource-label" for="system.range.value"
+          >{{localize 'TLGCC.SpellRange'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.range.value"
+            name="system.range.value"
+            type="text"
+            value="{{system.range.value}}"
+          />
+        </div>
+
+        <div class="resource grid-span-2">
+          <label class="resource-label" for="system.duration.value"
+          >{{localize 'TLGCC.SpellDuration'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.duration.value"
+            name="system.duration.value"
+            type="text"
+            value="{{system.duration.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.spell.spelllevel"
+          >{{localize 'TLGCC.SpellLevel'}}</label
+          >
+          <input
+            data-dtype="Number"
+            id="system.spell.spelllevel"
+            name="system.spell.spelllevel"
+            type="text"
+            value="{{system.spell.spelllevel}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.savevalue.value"
+          >{{localize 'TLGCC.SaveValue'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.savevalue.value"
+            name="system.savevalue.value"
+            type="text"
+            value="{{system.savevalue.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.spellresist.value"
+          >{{localize 'TLGCC.SpellResistance'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.spellresist.value"
+            name="system.spellresist.value"
+            type="text"
+            value="{{system.spellresist.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.spellcomp.value"
+          >{{localize 'TLGCC.SpellComponents'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.spellcomp.value"
+            name="system.spellcomp.value"
+            type="text"
+            value="{{system.spellcomp.value}}"
+          />
+        </div>
+        <div class="resource">
+          <label class="resource-label" for="system.spelldmg.value"
+          >{{localize 'TLGCC.SpellDamage'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.spelldmg.value"
+            name="system.spelldmg.value"
+            type="text"
+            value="{{system.spelldmg.value}}"
+          />
+        </div>
+
+        <div class="resource">
+          <label class="resource-label" for="system.prepared.value"
+          >{{localize 'TLGCC.SpellPrepared'}}</label
+          >
+          <input
+            data-dtype="Number"
+            id="system.prepared.value"
+            name="system.prepared.value"
+            type="number"
+            value="{{system.prepared.value}}"
+          />
+        </div>
+        <div class="resource grid-span-3">
+          <label class="resource-label" for="system.component.value"
+          >{{localize 'TLGCC.SpellComponent'}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.component.value"
+            name="system.component.value"
+            type="text"
+            value="{{system.component.value}}"
+          />
+        </div>
+        <div class="resource grid-span-2">
+          <label class="resource-label" for="system.class.value"
+          >{{localize system.class.label}}</label
+          >
+          <input
+            data-dtype="String"
+            id="system.class.value"
+            name="system.class.value"
+            type="text"
+            value="{{system.class.value}}"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    <div class="grid grid-2col">
+      <div class="resource grid-span-2">
+        <label class="resource-label" for="system.spell.summary"
+        >{{localize 'TLGCC.spellSummary'}}</label
+        >
+        <input
+          data-dtype="String"
+          id="system.spell.summary"
+          name="system.spell.summary"
+          type="text"
+          value="{{system.spell.summary}}"
+        />
+      </div>
+    </div>
+    {{!-- Description Tab --}}
+    <div class="description">
+      <div class="description-header">
+        <h2
+          class="spell-description-title"
+          title="Click the pencil icon at far right to edit. !!Note Please place full spell data below until we get roll data working"
+        >
+          Spell Description - Hover for important alert
+        </h2>
+        {{#unless editingDescription}}
+          {{#if editable}}
+            <button
+              type="button"
+              class="editor-edit control-button unbutton"
+              data-target="system.description"
+              aria-label="Spell Description"
+            >
+              <i class="fa-solid fa-pen-to-square" inert></i>
+            </button>
+          {{/if}}
+        {{/unless}}
+      </div>
+      <div class="description-editor">
+        {{#if editingDescription}}
+          <prose-mirror
+            name="{{editingDescription.target}}"
+            value="{{editingDescription.value}}"
+            document-uuid="{{item.uuid}}"
+            class="sheet-description-prosemirror"
+          ></prose-mirror>
+        {{else}}
+          <div class="editor">
+            <div class="editor-content">{{{enriched.description}}}</div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+</form>

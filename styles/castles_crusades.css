@@ -1,0 +1,1743 @@
+/* Custom Fonts */
+@font-face {
+  font-family: 'Soutane';
+  src: url('soutane-webfont.eot');
+  src: url('soutane-webfont.eot?#iefix') format('embedded-opentype'),
+    url('soutane-webfont.woff') format('woff'),
+    url('soutane-webfont.ttf') format('truetype'),
+    url('soutane-webfont.svg#soutaneregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soutane';
+  src: url('soutanebold-webfont.eot');
+  src: url('soutanebold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('soutanebold-webfont.woff') format('woff'),
+    url('soutanebold-webfont.ttf') format('truetype'),
+    url('soutanebold-webfont.svg#soutanebold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soutane';
+  src: url('soutanebolditalic-webfont.eot');
+  src: url('soutanebolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('soutanebolditalic-webfont.woff') format('woff'),
+    url('soutanebolditalic-webfont.ttf') format('truetype'),
+    url('soutanebolditalic-webfont.svg#soutanebold_italic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soutane';
+  src: url('soutaneitalic-webfont.eot');
+  src: url('soutaneitalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('soutaneitalic-webfont.woff') format('woff'),
+    url('soutaneitalic-webfont.ttf') format('truetype'),
+    url('soutaneitalic-webfont.svg#soutaneitalic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SoutaneBlack';
+  src: url('soutaneblack-webfont.eot');
+  src: url('soutaneblack-webfont.eot?#iefix') format('embedded-opentype'),
+    url('soutaneblack-webfont.woff') format('woff'),
+    url('soutaneblack-webfont.ttf') format('truetype'),
+    url('soutaneblack-webfont.svg#soutaneblackregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TeX Gyre Adventor';
+  src: url('texgyreadventor-regular-webfont.eot');
+  src: url('texgyreadventor-regular-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('texgyreadventor-regular-webfont.woff') format('woff'),
+    url('texgyreadventor-regular-webfont.ttf') format('truetype'),
+    url('texgyreadventor-regular-webfont.svg#tex_gyre_adventorregular')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TeX Gyre Adventor';
+  src: url('texgyreadventor-italic-webfont.eot');
+  src: url('texgyreadventor-italic-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('texgyreadventor-italic-webfont.woff') format('woff'),
+    url('texgyreadventor-italic-webfont.ttf') format('truetype'),
+    url('texgyreadventor-italic-webfont.svg#tex_gyre_adventoritalic')
+      format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TeX Gyre Adventor';
+  src: url('texgyreadventor-bold-webfont.eot');
+  src: url('texgyreadventor-bold-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('texgyreadventor-bold-webfont.woff') format('woff'),
+    url('texgyreadventor-bold-webfont.ttf') format('truetype'),
+    url('texgyreadventor-bold-webfont.svg#tex_gyre_adventorbold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TeX Gyre Adventor';
+  src: url('texgyreadventor-bolditalic-webfont.eot');
+  src: url('texgyreadventor-bolditalic-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('texgyreadventor-bolditalic-webfont.woff') format('woff'),
+    url('texgyreadventor-bolditalic-webfont.ttf') format('truetype'),
+    url('texgyreadventor-bolditalic-webfont.svg#tex_gyre_adventorbold_italic')
+      format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Global styles */
+.game {
+  font-family: 'Soutane', 'Century Gothic', 'TeX Gyre Adventor',
+  var(--font-primary), serif;
+}
+#logo {
+content: url('/systems/castles-and-crusades/assets/CnClogo.webp');
+  height: 100px;
+  width: 150px;
+}
+.rollable:hover,
+.rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.ability-button {
+  box-shadow: 1px 1px 2px 1px rgba(59, 59, 59, 0.2);
+  padding: 2px;
+}
+
+.grid,
+.grid-2col {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.grid-3col {
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-1col {
+  grid-column: span 1 / span 1;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-4col {
+  grid-column: span 4 / span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5col {
+  grid-column: span 5 / span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.grid-6col {
+  grid-column: span 6 / span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-7col {
+  grid-column: span 7 / span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-8col {
+  grid-column: span 8 / span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-9col {
+  grid-column: span 9 / span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.grid-10col {
+  grid-column: span 10 / span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-11col {
+  grid-column: span 11 / span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.grid-12col {
+  grid-column: span 12 / span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-start-2 {
+  grid-column-start: 2;
+}
+
+.grid-start-3 {
+  grid-column-start: 3;
+}
+
+.grid-start-4 {
+  grid-column-start: 4;
+}
+
+.grid-start-5 {
+  grid-column-start: 5;
+}
+
+.grid-start-6 {
+  grid-column-start: 6;
+}
+
+.grid-start-7 {
+  grid-column-start: 7;
+}
+
+.grid-start-8 {
+  grid-column-start: 8;
+}
+
+.grid-start-9 {
+  grid-column-start: 9;
+}
+
+.grid-start-10 {
+  grid-column-start: 10;
+}
+
+.grid-start-11 {
+  grid-column-start: 11;
+}
+
+.grid-start-12 {
+  grid-column-start: 12;
+}
+
+.grid-span-2 {
+  grid-column-end: span 2;
+}
+
+.grid-span-3 {
+  grid-column-end: span 3;
+}
+
+.grid-span-4 {
+  grid-column-end: span 4;
+}
+
+.grid-span-5 {
+  grid-column-end: span 5;
+}
+
+.grid-span-6 {
+  grid-column-end: span 6;
+}
+
+.grid-span-7 {
+  grid-column-end: span 7;
+}
+
+.grid-span-8 {
+  grid-column-end: span 8;
+}
+
+.grid-span-9 {
+  grid-column-end: span 9;
+}
+
+.grid-span-10 {
+  grid-column-end: span 10;
+}
+
+.grid-span-11 {
+  grid-column-end: span 11;
+}
+
+.grid-span-12 {
+  grid-column-end: span 12;
+}
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flex-group-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flexshrink {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.flex-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.flexlarge {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+.flex-align-center {
+  align-self: center;
+}
+
+.align-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.align-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.align-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Styles limited to tlgcc sheets */
+
+.tlgcc.sheet.actor {
+  font-family: 'Century Gothic', 'TeX Gyre Adventor', 'Soutane', sans-serif, var(--font-primary);
+}
+
+section.application.tlgcc .window-content,
+.application.tlgcc .window-content,
+section.tlgcc.application .window-content,
+.tlgcc.application .window-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+section.application.tlgcc.actor .window-content,
+.application.tlgcc.item .window-content,
+.application.tlgcc.actor .window-content,
+section.application.tlgcc.item .window-content,
+form.tlgcc.actor.tlgbackground,
+form.tlgcc.item.tlgbackground,
+form.tlgcc.character.tlgbackground,
+form.tlgcc.monster.tlgbackground {
+  background-image:
+  url('/systems/castles-and-crusades/assets/tlg_watermark.webp'),
+    url('/ui/parchment.jpg');
+  background-repeat: no-repeat, repeat;
+  background-position: center top, center;
+  background-size: cover, auto;
+}
+
+section.application.tlgcc .window-header .window-title,
+.application.tlgcc .window-header .window-title,
+section.tlgcc.application .window-header .window-title,
+.tlgcc.application .window-header .window-title,
+section.application.tlgcc .window-header .header-control,
+.application.tlgcc .window-header .header-control,
+section.tlgcc.application .window-header .header-control,
+.tlgcc.application .window-header .header-control {
+  color: #f1e3c2;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.65);
+}
+
+form.tlgcc,
+form.tlgcc.flexcol,
+.window-content > form.tlgcc,
+.window-content > form.tlgcc.flexcol {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  overflow: visible;
+}
+
+.tlgcc .sheet-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.tlgcc .sheet-header .header-fields {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tlgcc .sheet-header + .sheet-header {
+  margin-top: 4px;
+}
+
+.tlgcc .sheet-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 0;
+}
+
+.tlgcc .sheet-body > .tab {
+  width: 100%;
+}
+
+form.tlgcc.actor,
+form.tlgcc.item,
+form.tlgcc.character,
+form.tlgcc.monster {
+  color: #221c16;
+}
+
+form.tlgcc.actor h1,
+form.tlgcc.actor h2,
+form.tlgcc.actor h3,
+form.tlgcc.actor h4,
+form.tlgcc.actor label,
+form.tlgcc.actor .resource-label,
+form.tlgcc.actor .ability-label,
+form.tlgcc.actor .sheet-tabs .item,
+form.tlgcc.actor .items-header,
+form.tlgcc.actor .item-detail,
+form.tlgcc.actor .item-prop,
+form.tlgcc.actor .item-name,
+form.tlgcc.item h1,
+form.tlgcc.item h2,
+form.tlgcc.item h3,
+form.tlgcc.item h4,
+form.tlgcc.item label,
+form.tlgcc.item .resource-label,
+form.tlgcc.item .sheet-tabs .item,
+form.tlgcc.item .items-header,
+form.tlgcc.item .item-detail,
+form.tlgcc.item .item-prop,
+form.tlgcc.item .item-name,
+form.tlgcc.character h1,
+form.tlgcc.character h2,
+form.tlgcc.character h3,
+form.tlgcc.character h4,
+form.tlgcc.character label,
+form.tlgcc.character .resource-label,
+form.tlgcc.character .ability-label,
+form.tlgcc.character .sheet-tabs .item,
+form.tlgcc.character .items-header,
+form.tlgcc.character .item-detail,
+form.tlgcc.character .item-prop,
+form.tlgcc.character .item-name,
+form.tlgcc.monster h1,
+form.tlgcc.monster h2,
+form.tlgcc.monster h3,
+form.tlgcc.monster h4,
+form.tlgcc.monster label,
+form.tlgcc.monster .resource-label,
+form.tlgcc.monster .ability-label,
+form.tlgcc.monster .sheet-tabs .item,
+form.tlgcc.monster .items-header,
+form.tlgcc.monster .item-detail,
+form.tlgcc.monster .item-prop,
+form.tlgcc.monster .item-name {
+  color: #2f261d;
+  text-shadow: none;
+}
+
+form.tlgcc.actor .sheet-tabs .item.active,
+form.tlgcc.item .sheet-tabs .item.active,
+form.tlgcc.character .sheet-tabs .item.active,
+form.tlgcc.monster .sheet-tabs .item.active {
+  color: #6a2b1f;
+}
+
+form.tlgcc.actor input,
+form.tlgcc.actor textarea,
+form.tlgcc.actor select,
+form.tlgcc.item input,
+form.tlgcc.item textarea,
+form.tlgcc.item select,
+form.tlgcc.character input,
+form.tlgcc.character textarea,
+form.tlgcc.character select,
+form.tlgcc.monster input,
+form.tlgcc.monster textarea,
+form.tlgcc.monster select {
+  color: #f3ead4;
+  background: rgba(38, 28, 32, 0.88);
+  border: 1px solid rgba(66, 56, 47, 0.75);
+  box-shadow: none;
+}
+
+form.tlgcc.actor input::placeholder,
+form.tlgcc.actor textarea::placeholder,
+form.tlgcc.item input::placeholder,
+form.tlgcc.item textarea::placeholder,
+form.tlgcc.character input::placeholder,
+form.tlgcc.character textarea::placeholder,
+form.tlgcc.monster input::placeholder,
+form.tlgcc.monster textarea::placeholder {
+  color: rgba(243, 234, 212, 0.75);
+}
+
+form.tlgcc.actor .items-list,
+form.tlgcc.item .items-list,
+form.tlgcc.character .items-list,
+form.tlgcc.monster .items-list {
+  color: #2f261d;
+}
+
+form.tlgcc.actor .items-list .item .item-name,
+form.tlgcc.item .items-list .item .item-name,
+form.tlgcc.character .items-list .item .item-name,
+form.tlgcc.monster .items-list .item .item-name {
+  color: #2f261d;
+}
+
+form.tlgcc.actor .items-list .items-header,
+form.tlgcc.item .items-list .items-header,
+form.tlgcc.character .items-list .items-header,
+form.tlgcc.monster .items-list .items-header {
+  background: rgba(255, 250, 238, 0.25);
+  border: 1px solid #b8aa90;
+}
+
+.tlgcc .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  overflow: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  /* margin-bottom: 10px; */
+}
+
+.tlgcc .sheet-header .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.tlgcc .sheet-header .header-fields {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.tlgcc .sheet-header h1.charname {
+  height: 50px;
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+
+.tlgcc .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 4px 12px;
+  font-family: 'SoutaneBlack', 'Soutane', 'Century Gothic', 'TeX Gyre Adventor', var(--font-primary), serif;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.tlgcc .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.tlgcc .sheet-body,
+.tlgcc .sheet-body .description,
+.tlgcc .sheet-body .editor,
+.tlgcc .sheet-body .tab,
+.tlgcc .sheet-body .tab .editor {
+  height: calc(100% - 2px);
+}
+
+.tlgcc .sheet-body .tab.biography {
+  max-height: calc(100% - 53px);
+}
+
+.tlgcc .editor-content {
+  font-family: 'Century Gothic', 'TeX Gyre Adventor', 'Soutane', sans-serif, var(--font-primary);
+  font-size: 18px;
+  overflow-y: hidden;
+}
+
+.tlgcc .description-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tlgcc .description-header h2,
+.tlgcc .description-header .resource-label {
+  margin: 0;
+}
+
+.tlgcc .description-editor {
+  min-height: 16rem;
+}
+
+.tlgcc .description-editor .editor,
+.tlgcc .description-editor .editor-container {
+  min-height: 16rem;
+  height: auto;
+}
+
+.tlgcc .description-editor .editor .editor-content {
+  min-height: 14rem;
+  padding: 0 0.5rem;
+}
+
+.tlgcc .description-editor .editor-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tlgcc .description-editor prose-mirror,
+.tlgcc .description-editor .sheet-description-prosemirror {
+  display: block;
+  min-height: 16rem;
+}
+
+.tlgcc .tox .tox-editor-container {
+  background: #fff;
+}
+
+.tlgcc .tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+.tlgcc .resource-label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+  line-height: 1.15;
+}
+
+.tlgcc .resource {
+  margin: 0 3px;
+  padding: 0 3px;
+}
+
+.tlgcc .sheet-header .resources.grid {
+  width: 100%;
+  align-items: start;
+  row-gap: 6px;
+  column-gap: 12px;
+  padding: 2px 8px 4px;
+  grid-auto-rows: minmax(52px, auto);
+}
+
+.tlgcc .sheet-header .resource {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-width: 0;
+  gap: 3px;
+}
+
+.tlgcc .sheet-header .resource-label {
+  display: block;
+  min-height: 1.2em;
+  margin-bottom: 0;
+}
+
+.tlgcc .resource-content {
+  display: flex;
+  gap: 4px;
+}
+
+.tlgcc .sheet-header .resource-content {
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+}
+
+.tlgcc .resource-content input {
+  min-width: 20px;
+  flex: 1;
+}
+
+.tlgcc .sheet-header .resource > input,
+.tlgcc .sheet-header .resource-content input {
+  width: 100%;
+  min-width: 0;
+  min-height: 30px;
+}
+
+form.tlgcc.item .sheet-header {
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+form.tlgcc.item .sheet-header .profile-img {
+  flex: 0 0 84px;
+  width: 84px;
+  height: 84px;
+}
+
+form.tlgcc.item .sheet-header .header-fields {
+  gap: 6px;
+}
+
+form.tlgcc.item .sheet-header h1.charname {
+  height: 42px;
+  margin: 0;
+}
+
+form.tlgcc.item .sheet-header h1.charname input {
+  padding: 2px 10px;
+  font-size: 2rem;
+}
+
+form.tlgcc.item .sheet-header .resources.grid {
+  column-gap: 10px;
+  row-gap: 4px;
+  padding: 0 4px 2px;
+  grid-auto-rows: minmax(42px, auto);
+}
+
+form.tlgcc.item .sheet-header .resource {
+  gap: 2px;
+  margin: 2px 0 0;
+  padding: 2px;
+}
+
+form.tlgcc.item .sheet-header .resource-label {
+  min-height: 1.1em;
+  line-height: 1.1;
+  font-size: 13px;
+}
+
+form.tlgcc.item .sheet-header .resource > input,
+form.tlgcc.item .sheet-header .resource-content input {
+  min-height: 26px;
+}
+
+form.tlgcc.item.spell .description .description-header h2 {
+  font-size: 1.1rem !important;
+  line-height: 1.2 !important;
+  font-family: var(--font-primary) !important;
+  font-weight: 700;
+}
+
+.tlgcc .resources.grid {
+  gap: 4px;
+  padding: 4px;
+  margin: 6px 0 0;
+}
+
+.tlgcc .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.tlgcc .items-header > * {
+  font-size: 16px;
+  text-align: center;
+}
+
+.tlgcc .items-header .item-name {
+  font-weight: bold;
+  padding-left: 5px;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/*.tlgcc .items-header .item-detail {
+  font-weight: bold;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}*/
+
+.tlgcc .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+
+.tlgcc .items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tlgcc .items-list .item-name {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tlgcc .items-list .item-detail {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  min-width: 200px;
+  max-width: 200px;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tlgcc .items-list .item-name h3,
+.tlgcc .items-list .item-name h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.tlgcc .items-list .item-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  min-width: 100px;
+  max-width: 100px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.tlgcc .items-list .item-controls a {
+  font-size: 12px;
+  text-align: center;
+  margin: 0 6px;
+}
+
+.tlgcc .items-list .item {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #c9c7b8;
+}
+
+.tlgcc .items-list .item:last-child {
+  border-bottom: none;
+}
+
+.tlgcc .items-list .item .item-name {
+  color: #191813;
+}
+
+.tlgcc .items-list .item .item-name .item-image {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 30px;
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+
+.tlgcc .items-list .item-prop {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.tlgcc .items-list .attack-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 200px;
+  min-width: 200px;
+  max-width: 200px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.tlgcc .items-list .attack-actions .attack-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.tlgcc .items-list .attack-actions .attack-button i {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.tlgcc .items-list .item .attack-actions a i,
+.tlgcc .items-list .item .attack-actions .fas,
+.tlgcc .items-list .item .attack-actions .fa-solid {
+  font-size: 0.85rem !important;
+  line-height: 1 !important;
+}
+
+.tlgcc .items-list .attack-actions .attack-button img {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  min-height: 18px;
+  object-fit: contain;
+}
+
+.tlgcc .items-list .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.tlgcc .items-list .items-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+
+.tlgcc .items-list .items-header .item-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 5px;
+  text-align: left;
+}
+
+.tlgcc .item-detail {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  min-width: 200px;
+  max-width: 200px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.tlgcc .items-list .items-header .item-controls,
+.tlgcc .items-list .item .item-controls,
+.tlgcc .items-list .items-header .item-detail,
+.tlgcc .items-list .item .item-detail,
+.tlgcc .items-list .items-header .item-prop,
+.tlgcc .items-list .item .item-prop,
+.tlgcc .items-list .items-header .attack-actions,
+.tlgcc .items-list .item .attack-actions {
+  box-sizing: border-box;
+}
+
+form.tlgcc.actor .items-list .items-header,
+form.tlgcc.actor .items-list .item,
+form.tlgcc.character .items-list .items-header,
+form.tlgcc.character .items-list .item,
+form.tlgcc.monster .items-list .items-header,
+form.tlgcc.monster .items-list .item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px 100px;
+  align-items: center;
+  column-gap: 0;
+}
+
+form.tlgcc.actor .items-list .items-header > .item-name,
+form.tlgcc.actor .items-list .item > .item-name,
+form.tlgcc.actor .items-list .items-header > .item-detail,
+form.tlgcc.actor .items-list .item > .item-detail,
+form.tlgcc.actor .items-list .items-header > .item-prop,
+form.tlgcc.actor .items-list .item > .item-prop,
+form.tlgcc.actor .items-list .items-header > .attack-actions,
+form.tlgcc.actor .items-list .item > .attack-actions,
+form.tlgcc.actor .items-list .items-header > .item-controls,
+form.tlgcc.actor .items-list .item > .item-controls,
+form.tlgcc.character .items-list .items-header > .item-name,
+form.tlgcc.character .items-list .item > .item-name,
+form.tlgcc.character .items-list .items-header > .item-detail,
+form.tlgcc.character .items-list .item > .item-detail,
+form.tlgcc.character .items-list .items-header > .item-prop,
+form.tlgcc.character .items-list .item > .item-prop,
+form.tlgcc.character .items-list .items-header > .attack-actions,
+form.tlgcc.character .items-list .item > .attack-actions,
+form.tlgcc.character .items-list .items-header > .item-controls,
+form.tlgcc.character .items-list .item > .item-controls,
+form.tlgcc.monster .items-list .items-header > .item-name,
+form.tlgcc.monster .items-list .item > .item-name,
+form.tlgcc.monster .items-list .items-header > .item-detail,
+form.tlgcc.monster .items-list .item > .item-detail,
+form.tlgcc.monster .items-list .items-header > .item-prop,
+form.tlgcc.monster .items-list .item > .item-prop,
+form.tlgcc.monster .items-list .items-header > .attack-actions,
+form.tlgcc.monster .items-list .item > .attack-actions,
+form.tlgcc.monster .items-list .items-header > .item-controls,
+form.tlgcc.monster .items-list .item > .item-controls {
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  flex: none;
+}
+
+form.tlgcc.actor .items-list .items-header > .item-name,
+form.tlgcc.actor .items-list .item > .item-name,
+form.tlgcc.character .items-list .items-header > .item-name,
+form.tlgcc.character .items-list .item > .item-name,
+form.tlgcc.monster .items-list .items-header > .item-name,
+form.tlgcc.monster .items-list .item > .item-name {
+  grid-column: 1;
+}
+
+form.tlgcc.actor .items-list .items-header > .item-detail,
+form.tlgcc.actor .items-list .item > .item-detail,
+form.tlgcc.actor .items-list .items-header > .item-prop,
+form.tlgcc.actor .items-list .item > .item-prop,
+form.tlgcc.actor .items-list .items-header > .attack-actions,
+form.tlgcc.actor .items-list .item > .attack-actions,
+form.tlgcc.character .items-list .items-header > .item-detail,
+form.tlgcc.character .items-list .item > .item-detail,
+form.tlgcc.character .items-list .items-header > .item-prop,
+form.tlgcc.character .items-list .item > .item-prop,
+form.tlgcc.character .items-list .items-header > .attack-actions,
+form.tlgcc.character .items-list .item > .attack-actions,
+form.tlgcc.monster .items-list .items-header > .item-detail,
+form.tlgcc.monster .items-list .item > .item-detail,
+form.tlgcc.monster .items-list .items-header > .item-prop,
+form.tlgcc.monster .items-list .item > .item-prop,
+form.tlgcc.monster .items-list .items-header > .attack-actions,
+form.tlgcc.monster .items-list .item > .attack-actions {
+  grid-column: 2;
+}
+
+form.tlgcc.actor .items-list .items-header > .item-controls,
+form.tlgcc.actor .items-list .item > .item-controls,
+form.tlgcc.character .items-list .items-header > .item-controls,
+form.tlgcc.character .items-list .item > .item-controls,
+form.tlgcc.monster .items-list .items-header > .item-controls,
+form.tlgcc.monster .items-list .item > .item-controls {
+  grid-column: 3;
+  justify-content: flex-end;
+}
+
+form.tlgcc.actor .items-list .items-header > .item-detail,
+form.tlgcc.actor .items-list .items-header > .item-prop,
+form.tlgcc.actor .items-list .items-header > .attack-actions,
+form.tlgcc.character .items-list .items-header > .item-detail,
+form.tlgcc.character .items-list .items-header > .item-prop,
+form.tlgcc.character .items-list .items-header > .attack-actions,
+form.tlgcc.monster .items-list .items-header > .item-detail,
+form.tlgcc.monster .items-list .items-header > .item-prop,
+form.tlgcc.monster .items-list .items-header > .attack-actions {
+  justify-content: center;
+  text-align: center;
+}
+
+form.tlgcc.actor .items-list .items-header > .item-controls,
+form.tlgcc.character .items-list .items-header > .item-controls,
+form.tlgcc.monster .items-list .items-header > .item-controls {
+  text-align: right;
+}
+
+.tlgcc .effects .item .effect-source,
+.tlgcc .effects .item .effect-duration,
+.tlgcc .effects .item .effect-controls {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+
+.tlgcc .effects .item .effect-controls {
+  border: none;
+}
+
+.ability-header {
+  justify-content: flex-start;
+  flex-direction: row;
+  text-align: start;
+  font-size: 0.8em;
+}
+form.tlgcc.character .abilitybox > span.abilityscore {
+  width: 50px;
+  font-size: 16px;
+}
+form.tlgcc.character .abilitybox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  min-height: 118px;
+  padding: 10px 8px 8px;
+  box-sizing: border-box;
+  border: 15px solid transparent; /* control the offset of the lines */
+  outline: 2px solid #000; /* adjust the 2px here */
+  outline-offset: -10px; /* control the offset of the rectangle */
+  background: linear-gradient(#777777 0 0) top,
+  linear-gradient(#777777 0 0) left, linear-gradient(#777777 0 0) bottom,
+  linear-gradient(#777777 0 0) right;
+  background-size: 200% 2px, 2px 200%; /* adjust the 2px here */
+  background-origin: padding-box;
+  background-repeat: no-repeat;
+}
+
+form.tlgcc.character .abilitybox .break {
+  display: none;
+}
+.flex-break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+form.tlgcc.character .ability-label {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 1;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto;
+  white-space: nowrap;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore input,
+form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore > input.ability-score-input,
+form.tlgcc.character .abilitybox > span.abilityscore > input[name^='system.abilities.'][name$='.value'] {
+  display: inline-block !important;
+  flex: 0 0 30px !important;
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  inline-size: 30px !important;
+  block-size: auto;
+  padding: 1px 3px !important;
+  text-align: center;
+}
+
+form.tlgcc.character input[name^='system.abilities.'][name$='.value'] {
+  display: inline-block !important;
+  flex: 0 0 30px !important;
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  inline-size: 30px !important;
+  padding: 1px 3px !important;
+  text-align: center;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  padding: 1px 3px;
+  text-align: center;
+  margin-left: 0 !important;
+}
+
+form.tlgcc.character .abilitybox > span.ability-prime-row {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  width: auto;
+}
+
+form.tlgcc.character .abilitybox > span.ability-prime-row .ability-prime-checkbox,
+form.tlgcc.character .abilitybox > span.ability-prime-row input[type='checkbox'] {
+  margin: 0 !important;
+  height: 16px;
+  width: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+/* Actor sheet parity pass: the runtime V2 sheet is clearly matching the broad
+   actor selectors, so the legacy parchment field treatment needs to win there
+   instead of relying on narrower .character-only selectors. */
+form.tlgcc.actor {
+  color: #221c16;
+}
+
+form.tlgcc.actor .sheet-header {
+  margin-bottom: 4px;
+}
+
+form.tlgcc.actor .sheet-header .header-fields {
+  gap: 2px;
+}
+
+form.tlgcc.actor .sheet-header h1.charname {
+  margin: 4px 0;
+}
+
+form.tlgcc.actor .sheet-header h1.charname input {
+  padding: 2px 8px;
+  font-family: 'Century Gothic', 'TeX Gyre Adventor', 'Soutane', sans-serif, var(--font-primary) !important;
+  font-size: 2.05rem;
+  font-weight: 700;
+  color: #211910 !important;
+  background: rgba(255, 251, 241, 0.46) !important;
+  border: 1px solid rgba(108, 97, 78, 0.7) !important;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+form.tlgcc.actor .sheet-header .resources.grid {
+  row-gap: 4px;
+  column-gap: 10px;
+  padding: 0 6px 2px;
+  margin: 6px 0 0;
+  grid-auto-rows: minmax(42px, auto);
+}
+
+form.tlgcc.actor .sheet-header .resource {
+  gap: 2px;
+  margin: 0 2px;
+  padding: 0 2px;
+}
+
+form.tlgcc.actor .resource-label {
+  font-size: 16px;
+  line-height: 1.05;
+  color: #2f261d;
+}
+
+form.tlgcc.actor .sheet-tabs {
+  margin-top: 2px;
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+form.tlgcc.actor .sheet-tabs .item {
+  color: #5a2e21;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+form.tlgcc.actor .sheet-tabs .item.active {
+  color: #7b231c;
+  text-shadow: none;
+}
+
+form.tlgcc.actor input,
+form.tlgcc.actor textarea,
+form.tlgcc.actor select {
+  color: #241a12 !important;
+  background: rgba(255, 250, 238, 0.44) !important;
+  border: 1px solid rgba(113, 101, 84, 0.78) !important;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+form.tlgcc.actor input::placeholder,
+form.tlgcc.actor textarea::placeholder {
+  color: rgba(70, 57, 43, 0.58) !important;
+}
+
+form.tlgcc.actor .resource-content input,
+form.tlgcc.actor .sheet-header .resource > input {
+  min-height: 32px;
+}
+
+form.tlgcc.actor .sheet-body {
+  padding: 0 6px 6px;
+}
+
+form.tlgcc.actor input[type='checkbox']:not(.ability-prime-checkbox) {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  border: 1px solid rgba(113, 101, 84, 0.9) !important;
+  border-radius: 3px;
+  background: rgba(255, 250, 238, 0.62) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+}
+
+form.tlgcc.actor input[type='checkbox']:not(.ability-prime-checkbox):checked::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #4f261c;
+  border-radius: 2px;
+}
+
+form.tlgcc.actor input[type='checkbox']:not(.ability-prime-checkbox):focus-visible {
+  outline: 1px solid rgba(123, 35, 28, 0.85);
+  outline-offset: 1px;
+}
+
+/* Prime checkboxes should match the legacy native control instead of the
+   actor-wide custom checkbox skin. */
+form.tlgcc.actor .abilitybox > span.ability-prime-row .ability-prime-checkbox,
+form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkbox[type='checkbox'] {
+  --checkbox-size: 13px;
+  --checkbox-background-color: rgba(255, 250, 238, 0.96);
+  --checkbox-checked-color: #d7923b;
+  --checkbox-checkmark-color: #fff8ee;
+  --checkbox-disabled-color: rgba(150, 140, 124, 0.65);
+  --checkbox-font-weight: 700;
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  min-height: 13px !important;
+  margin: 5px 8px 3px !important;
+  vertical-align: middle;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+form.tlgcc.actor .abilitybox > span.ability-prime-row .ability-prime-checkbox::before,
+form.tlgcc.actor .abilitybox > span.ability-prime-row .ability-prime-checkbox::after,
+form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkbox[type='checkbox']::before,
+form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkbox[type='checkbox']::after {
+  border-radius: 3px;
+}
+
+form.tlgcc.actor .abilitybox > span.ability-prime-row .ability-prime-checkbox:not(:checked)::before,
+form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkbox[type='checkbox']:not(:checked)::before {
+  background: rgba(255, 250, 238, 0.96) !important;
+  background-color: rgba(255, 250, 238, 0.96) !important;
+  color: transparent !important;
+  border: 1px solid rgba(113, 101, 84, 0.9) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+form.tlgcc.actor .abilitybox > span.ability-prime-row .ability-prime-checkbox:checked,
+form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkbox[type='checkbox']:checked {
+  --checkbox-background-color: rgba(255, 250, 238, 0.96);
+}
+
+form.tlgcc.actor .abilitybox > span.ability-prime-row .ability-prime-checkbox:checked::before,
+form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkbox[type='checkbox']:checked::before {
+  border-radius: 3px;
+}
+
+form.tlgcc.character {
+  color: #221c16;
+}
+
+form.tlgcc.character .tab.combat > .grid.grid-6col {
+  margin: 4px 0 8px;
+  gap: 8px;
+}
+
+form.tlgcc.character .tab.combat > .grid.grid-3col {
+  margin: 0;
+  gap: 10px;
+}
+
+form.tlgcc.character .sidebar .resource-pool h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+form.tlgcc.character .sidebar hr {
+  margin: 4px 0 6px;
+}
+
+form.tlgcc.character .sidebar .ability {
+  margin-bottom: 2px;
+}
+
+form.tlgcc.character .abilitybox {
+  min-height: 104px;
+  padding: 8px 7px 7px;
+  gap: 4px;
+}
+
+form.tlgcc.character .ability-label {
+  font-size: 24px;
+  line-height: 1;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore {
+  gap: 4px;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore input,
+form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
+  font-size: 15px;
+}
+
+form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
+  min-width: 28px;
+  padding: 1px 2px;
+}
+
+form.tlgcc.character .abilitybox > span.ability-prime-row {
+  gap: 3px;
+  font-size: 14px;
+}
+
+form.tlgcc.character .items-list .items-header {
+  background: rgba(255, 250, 238, 0.2);
+}
+
+form.tlgcc.character .items-list .item {
+  padding: 0 1px;
+}
+
+/* Item sheet parity pass: match the actor parchment/light-field treatment. */
+form.tlgcc.item {
+  color: #221c16;
+}
+
+form.tlgcc.item .sheet-header {
+  margin-bottom: 4px;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+form.tlgcc.item .sheet-header .header-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+form.tlgcc.item .sheet-header h1.charname input {
+  padding: 2px 8px;
+  font-family: 'Century Gothic', 'TeX Gyre Adventor', 'Soutane', sans-serif, var(--font-primary) !important;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #211910 !important;
+  background: rgba(255, 251, 241, 0.46) !important;
+  border: 1px solid rgba(108, 97, 78, 0.7) !important;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+  line-height: 1.1;
+  min-height: 48px;
+}
+
+form.tlgcc.item .sheet-header .profile-img {
+  flex: 0 0 84px;
+  width: 84px;
+  height: 84px;
+  margin-right: 8px;
+}
+
+form.tlgcc.item .sheet-header h1.charname {
+  height: auto;
+  min-height: 42px;
+  margin: 0 0 6px;
+}
+
+form.tlgcc.item .sheet-header .grid {
+  margin: 0;
+  gap: 8px 10px;
+  padding: 0 4px 2px;
+}
+
+form.tlgcc.item .sheet-header .resource {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+form.tlgcc.item .sheet-header .resource > input,
+form.tlgcc.item .sheet-header .resource-content input {
+  min-height: 28px;
+  width: 100%;
+  min-width: 0;
+}
+
+form.tlgcc.item .sheet-tabs {
+  margin-top: 2px;
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+form.tlgcc.item .sheet-tabs .item {
+  color: #5a2e21;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+form.tlgcc.item .sheet-tabs .item.active {
+  color: #7b231c;
+  text-shadow: none;
+}
+
+form.tlgcc.item input,
+form.tlgcc.item textarea,
+form.tlgcc.item select {
+  color: #241a12 !important;
+  background: rgba(255, 250, 238, 0.44) !important;
+  border: 1px solid rgba(113, 101, 84, 0.78) !important;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+form.tlgcc.item input::placeholder,
+form.tlgcc.item textarea::placeholder {
+  color: rgba(70, 57, 43, 0.58) !important;
+}
+
+form.tlgcc.item .resource-label {
+  color: #2f261d;
+  font-size: 14px;
+  line-height: 1.05;
+  margin-bottom: 2px;
+}
+
+form.tlgcc.item .sheet-body {
+  padding: 0 6px 6px;
+}
+
+form.tlgcc.item .sheet-body > .grid,
+form.tlgcc.item .sheet-body > .description {
+  margin-top: 4px;
+}
+
+form.tlgcc.item .description-header {
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+form.tlgcc.item .description-header .resource-label,
+form.tlgcc.item .description-header h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+form.tlgcc.item .description-editor .editor,
+form.tlgcc.item .description-editor .editor-container,
+form.tlgcc.item .description-editor prose-mirror,
+form.tlgcc.item .description-editor .sheet-description-prosemirror {
+  background: rgba(255, 250, 238, 0.3);
+  border-radius: 3px;
+}
+
+form.tlgcc.item .description-editor {
+  min-height: 14rem;
+}
+
+form.tlgcc.item .description-editor .editor,
+form.tlgcc.item .description-editor .editor-container {
+  min-height: 14rem;
+}
+
+form.tlgcc.item .description-editor .editor .editor-content {
+  min-height: 12rem;
+  padding: 0 0.45rem;
+}
+.tlgbackground {
+background: url('/systems/castles-and-crusades/assets/tlg_watermark.webp');
+  background-repeat: no-repeat;
+}
+
+/* Compressed money inputs */
+.money-input {
+  width: 60px;
+  text-align: center;
+  height: 24px;
+  margin: 2px;
+  border: 1px solid #7a7971;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Valuables input styling */
+.valuables-input {
+  width: 100%;
+  height: 24px;
+  margin: 2px;
+  padding: 0 5px;
+  border: 1px solid #7a7971;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 600px) {
+  .grid-7col {
+    grid-template-columns: repeat(4, 1fr) 3fr;
+  }
+
+  .valuables-input {
+    grid-column: span 5;
+  }
+}
+
+/* attack button styles */
+.attack-button {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/*.attack-button.disabled {*/
+/*  opacity: 0.4;*/
+/*  cursor: not-allowed;*/
+/*  pointer-events: none;*/
+/*}*/
+
+.attack-button:hover:not(.disabled) {
+  opacity: 0.8;
+}
+
+/* Optional: Add a tooltip for disabled buttons */
+/*.attack-button.disabled::after {*/
+/*  content: attr(data-disabled-reason);*/
+/*  position: absolute;*/
+/*  background: rgba(0, 0, 0, 0.8);*/
+/*  color: white;*/
+/*  padding: 4px 8px;*/
+/*  border-radius: 4px;*/
+/*  font-size: 12px;*/
+/*  white-space: nowrap;*/
+/*  visibility: hidden;*/
+/*  opacity: 0;*/
+/*  transition: opacity 0.2s ease-in-out;*/
+/*  pointer-events: none;*/
+/*}*/
+
+.attack-button.disabled:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Temporarily override the disabled button styles */
+.attack-button.disabled {
+  opacity: 1; /* Changed from 0.4 to 1 */
+  cursor: pointer; /* Changed from not-allowed to pointer */
+  pointer-events: all; /* Changed from none to all */
+}
+
+/* Keep the tooltip for reference but make it less prominent */
+.attack-button.disabled::after {
+  opacity: 0.5;
+}
