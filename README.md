@@ -28,7 +28,7 @@ The system has been updated to run cleanly against current Foundry core releases
 
 The system includes updates to align with Foundry's newer application and sheet framework direction:
 
-- a V2-oriented sheet layer in [v2-sheets.js](E:/Documents/TTRPGs/Foundry%20Development/System%20-%20Castles%20%26%20Crusades/castles-and-crusades/v2-sheets.js)
+- a V2-oriented sheet layer in v2-sheets.js
 - updated actor and item sheet template routing for the active system id
 - modernized sheet rendering and registration behavior for current Foundry versions
 - continued support for character, monster, and item sheet workflows under the newer framework model
@@ -59,4 +59,4 @@ Install the system in Foundry under:
 Because the system retains the original id and folder name, official Troll Lord Games modules and other existing integrations that target `castles-and-crusades` can continue to resolve the expected system identifier and paths.
 
 ## Notes
-
+I did use Codex to help with this upgrade.  If you get bent out of shape about AI usage in a programming context, just move along and stick to the Foundry v12 system.
