@@ -582,6 +582,10 @@ form.tlgcc.monster .items-list .items-header {
   margin-right: 10px;
 }
 
+.tlgcc img[data-edit="img"] {
+  cursor: pointer;
+}
+
 .tlgcc .sheet-header .header-fields {
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -641,6 +645,21 @@ form.tlgcc.monster .items-list .items-header {
 .tlgcc .description-header h2,
 .tlgcc .description-header .resource-label {
   margin: 0;
+}
+
+form.tlgcc.actor .description-header h2,
+form.tlgcc.actor .description-header .resource-label,
+form.tlgcc.item .description-header h2,
+form.tlgcc.item .description-header .resource-label,
+form.tlgcc.character .description-header h2,
+form.tlgcc.character .description-header .resource-label,
+form.tlgcc.monster .description-header h2,
+form.tlgcc.monster .description-header .resource-label {
+  font-size: 15px;
+  line-height: 1.1;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  text-transform: none;
 }
 
 .tlgcc .description-editor {
@@ -738,8 +757,8 @@ form.tlgcc.monster .items-list .items-header {
 }
 
 form.tlgcc.item.spell .description .description-header h2 {
-  font-size: 1.1rem !important;
-  line-height: 1.2 !important;
+  font-size: 15px !important;
+  line-height: 1.1 !important;
   font-family: var(--font-primary) !important;
   font-weight: 700;
 }
@@ -1493,7 +1512,7 @@ form.tlgcc.item .description-header {
 form.tlgcc.item .description-header .resource-label,
 form.tlgcc.item .description-header h2 {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.1;
 }
 
@@ -1667,6 +1686,11 @@ form.tlgcc.actor.unit .unit-card-header h2 {
   line-height: 1.05;
   color: #3a2319;
   text-transform: none;
+}
+
+form.tlgcc.actor.unit .unit-text-block .unit-card-header h2 {
+  font-size: 15px;
+  line-height: 1.1;
 }
 
 form.tlgcc.actor.unit .unit-card-body {

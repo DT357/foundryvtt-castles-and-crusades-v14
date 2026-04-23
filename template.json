@@ -293,7 +293,7 @@
         "label": "TLGCC.UnitFace"
       },
       "morale": {
-        "value": 0,
+        "value": "",
         "label": "TLGCC.UnitMorale"
       },
       "spells": {

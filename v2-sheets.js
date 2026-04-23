@@ -1,15 +1,18 @@
 const {
   api: { HandlebarsApplicationMixin },
-  apps: { DocumentSheetConfig },
+  apps: { DocumentSheetConfig, FilePicker: FilePickerNamespace },
   sheets: { ActorSheetV2, ItemSheetV2 },
   ux: { TextEditor: TextEditorNamespace },
 } = foundry.applications;
 
 const FoundryTextEditor = TextEditorNamespace.implementation;
+const FoundryFilePicker = FilePickerNamespace.implementation;
 const SYSTEM_ID = "castles-and-crusades";
 const DEFAULT_ITEM_IMAGE = "icons/svg/item-bag.svg";
 const ITEM_TYPES = ["item", "weapon", "armor", "spell", "feature"];
 const ACTOR_TYPES = ["character", "monster", "unit"];
+const ACTIVE_IMAGE_PICKER = Symbol("tlgccActiveImagePicker");
+const ACTIVE_IMAGE_PICKER_PROMISE = Symbol("tlgccActiveImagePickerPromise");
 
 function getRollMode() {
   return game.settings.get("core", "rollMode");
@@ -21,6 +24,12 @@ function showDetailedFormulas() {
 
 function capitalize(value) {
   return `${value ?? ""}`.charAt(0).toUpperCase() + `${value ?? ""}`.slice(1);
+}
+
+function formatSignedModifier(value) {
+  const parsedValue = Number.parseInt(`${value ?? ""}`.trim(), 10);
+  if (!Number.isFinite(parsedValue)) return `${value ?? ""}`.trim();
+  return parsedValue >= 0 ? `+${parsedValue}` : `${parsedValue}`;
 }
 
 async function submitDocumentUpdate(event, form, formData) {
@@ -61,6 +70,62 @@ function restoreScrollState(rootElement, scrollState = []) {
       element.scrollLeft = state.left;
     }
   });
+}
+
+async function openDocumentImagePicker(application, document, fieldPath = "img") {
+  if (!application?.isEditable || !document || !fieldPath) return;
+
+  const existingPicker = application[ACTIVE_IMAGE_PICKER];
+  if (existingPicker) {
+    if (existingPicker.rendered) {
+      if (existingPicker.minimized) await existingPicker.maximize();
+      existingPicker.bringToFront?.();
+      return existingPicker;
+    }
+    if (application[ACTIVE_IMAGE_PICKER_PROMISE]) {
+      return application[ACTIVE_IMAGE_PICKER_PROMISE];
+    }
+  }
+
+  const current = foundry.utils.getProperty(document._source ?? document, fieldPath) ?? "";
+  const picker = new FoundryFilePicker({
+    type: "image",
+    current,
+    callback: async (selectedPath) => {
+      if (!selectedPath || selectedPath === current) return;
+      await document.update({ [fieldPath]: selectedPath });
+    },
+    position: {
+      top: (application.position?.top ?? 0) + 40,
+      left: (application.position?.left ?? 0) + 10,
+    },
+  });
+
+  application[ACTIVE_IMAGE_PICKER] = picker;
+
+  const originalClose = picker.close.bind(picker);
+  picker.close = async (...args) => {
+    try {
+      return await originalClose(...args);
+    } finally {
+      if (application[ACTIVE_IMAGE_PICKER] === picker) application[ACTIVE_IMAGE_PICKER] = null;
+      if (application[ACTIVE_IMAGE_PICKER_PROMISE]) application[ACTIVE_IMAGE_PICKER_PROMISE] = null;
+    }
+  };
+
+  const browsePromise = (async () => {
+    try {
+      return await picker.browse();
+    } finally {
+      application[ACTIVE_IMAGE_PICKER_PROMISE] = null;
+      if (!picker.rendered && application[ACTIVE_IMAGE_PICKER] === picker) {
+        application[ACTIVE_IMAGE_PICKER] = null;
+      }
+    }
+  })();
+
+  application[ACTIVE_IMAGE_PICKER_PROMISE] = browsePromise;
+  return browsePromise;
 }
 
 class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
@@ -208,6 +273,10 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     });
 
     if (this.isEditable) {
+      htmlElement.querySelectorAll('[data-edit="img"]').forEach((element) => {
+        element.onclick = this.#onImageEdit;
+      });
+
       htmlElement.querySelectorAll(".editor-edit[data-target]").forEach((element) => {
         element.onclick = this.#onDescriptionEdit;
       });
@@ -266,6 +335,10 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   async #prepareUnitData(context) {
     const system = context.system;
+    const moraleValue = `${system.morale?.value ?? ""}`.trim();
+    const moraleModifier = Number.parseInt(moraleValue, 10);
+    const hasMoraleRoll = Number.isFinite(moraleModifier);
+
     context.unitFlags = {
       hasMainAttack: Boolean(system.mainAttack?.name || system.mainAttack?.damage || system.mainAttack?.bonus),
       hasFormationAttack: Boolean(
@@ -278,7 +351,9 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     context.unitActions = {
       mainAttackRoll: this.#buildBonusRollFormula(system.mainAttack?.bonus),
       formationAttackRoll: this.#buildBonusRollFormula(system.formationAttack?.bonus),
-      moraleRoll: this.#buildBonusRollFormula(system.morale?.value),
+      moraleRoll: hasMoraleRoll ? this.#buildBonusRollFormula(moraleModifier) : null,
+      hasMoraleRoll,
+      moraleDisplay: formatSignedModifier(moraleValue),
     };
     await this.#prepareEnrichedText(context, "unitSpells", "system.spells.value");
     await this.#prepareEnrichedText(context, "unitNotes", "system.notes.value");
@@ -762,6 +837,13 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     this.render();
   };
 
+  #onImageEdit = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const fieldPath = event.currentTarget?.dataset?.edit;
+    await openDocumentImagePicker(this, this.actor, fieldPath);
+  };
+
   #bindDescriptionEditorLifecycle(htmlElement) {
     if (!this.editingDescriptionTarget) return;
 
@@ -893,6 +975,10 @@ class TlgccItemSheetV2 extends HandlebarsApplicationMixin(ItemSheetV2) {
     this.#restorePendingScrollState(form);
 
     if (this.isEditable) {
+      form.querySelectorAll('[data-edit="img"]').forEach((element) => {
+        element.onclick = this.#onImageEdit;
+      });
+
       form.querySelectorAll(".editor-edit[data-target]").forEach((element) => {
         element.onclick = this.#onDescriptionEdit;
       });
@@ -936,6 +1022,13 @@ class TlgccItemSheetV2 extends HandlebarsApplicationMixin(ItemSheetV2) {
     this.#capturePendingScrollState();
     this.editingDescriptionTarget = target;
     this.render();
+  };
+
+  #onImageEdit = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const fieldPath = event.currentTarget?.dataset?.edit;
+    await openDocumentImagePicker(this, this.item, fieldPath);
   };
 
   #bindDescriptionEditorLifecycle(htmlElement) {

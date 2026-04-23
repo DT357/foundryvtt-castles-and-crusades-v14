@@ -24,7 +24,7 @@
 
         <div class="resource flex-group-center unit-summary-morale">
           <label class="resource-label">{{localize 'TLGCC.UnitMorale'}}</label>
-          <input type="number" step="1" name="system.morale.value" value="{{system.morale.value}}" data-dtype="Number"/>
+          <input type="text" name="system.morale.value" value="{{system.morale.value}}" data-dtype="String"/>
         </div>
 
         <div class="resource flex-group-center unit-summary-ac">
@@ -139,13 +139,15 @@
           <div class="unit-card-body">
             <p class="unit-readout">
               <span class="unit-readout-label">{{localize 'TLGCC.UnitMoraleModifier'}}</span>
-              <span class="unit-readout-value">{{numberFormat system.morale.value decimals=0 sign=true}}</span>
+              <span class="unit-readout-value">{{unitActions.moraleDisplay}}</span>
             </p>
-            <div class="unit-action-row">
-              <a class="rollable unit-action-button" data-roll="{{unitActions.moraleRoll}}" data-label="<b>{{localize 'TLGCC.UnitMoraleCheck'}}</b> &rarr; {{actor.name}}">
-                {{localize 'TLGCC.UnitMoraleCheck'}}
-              </a>
-            </div>
+            {{#if unitActions.hasMoraleRoll}}
+              <div class="unit-action-row">
+                <a class="rollable unit-action-button" data-roll="{{unitActions.moraleRoll}}" data-label="<b>{{localize 'TLGCC.UnitMoraleCheck'}}</b> &rarr; {{actor.name}}">
+                  {{localize 'TLGCC.UnitMoraleCheck'}}
+                </a>
+              </div>
+            {{/if}}
           </div>
         </article>
 
