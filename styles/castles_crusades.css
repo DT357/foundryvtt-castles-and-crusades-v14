@@ -737,55 +737,6 @@ form.tlgcc.monster .items-list .items-header {
   min-height: 30px;
 }
 
-form.tlgcc.item .sheet-header {
-  margin-bottom: 8px;
-  gap: 10px;
-}
-
-form.tlgcc.item .sheet-header .profile-img {
-  flex: 0 0 84px;
-  width: 84px;
-  height: 84px;
-}
-
-form.tlgcc.item .sheet-header .header-fields {
-  gap: 6px;
-}
-
-form.tlgcc.item .sheet-header h1.charname {
-  height: 42px;
-  margin: 0;
-}
-
-form.tlgcc.item .sheet-header h1.charname input {
-  padding: 2px 10px;
-  font-size: 2rem;
-}
-
-form.tlgcc.item .sheet-header .resources.grid {
-  column-gap: 10px;
-  row-gap: 4px;
-  padding: 0 4px 2px;
-  grid-auto-rows: minmax(42px, auto);
-}
-
-form.tlgcc.item .sheet-header .resource {
-  gap: 2px;
-  margin: 2px 0 0;
-  padding: 2px;
-}
-
-form.tlgcc.item .sheet-header .resource-label {
-  min-height: 1.1em;
-  line-height: 1.1;
-  font-size: 13px;
-}
-
-form.tlgcc.item .sheet-header .resource > input,
-form.tlgcc.item .sheet-header .resource-content input {
-  min-height: 26px;
-}
-
 form.tlgcc.item.spell .description .description-header h2 {
   font-size: 1.1rem !important;
   line-height: 1.2 !important;
@@ -1249,28 +1200,6 @@ form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
   margin-left: 0 !important;
 }
 
-form.tlgcc.character .abilitybox > span.ability-prime-row {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  line-height: 1;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  width: auto;
-}
-
-form.tlgcc.character .abilitybox > span.ability-prime-row .ability-prime-checkbox,
-form.tlgcc.character .abilitybox > span.ability-prime-row input[type='checkbox'] {
-  margin: 0 !important;
-  height: 16px;
-  width: 16px;
-  min-width: 16px;
-  min-height: 16px;
-  vertical-align: middle;
-  flex: 0 0 auto;
-}
-
 /* Actor sheet parity pass: the runtime V2 sheet is clearly matching the broad
    actor selectors, so the legacy parchment field treatment needs to win there
    instead of relying on narrower .character-only selectors. */
@@ -1439,71 +1368,6 @@ form.tlgcc.actor .abilitybox > span.ability-prime-row input.ability-prime-checkb
   border-radius: 3px;
 }
 
-form.tlgcc.character {
-  color: #221c16;
-}
-
-form.tlgcc.character .tab.combat > .grid.grid-6col {
-  margin: 4px 0 8px;
-  gap: 8px;
-}
-
-form.tlgcc.character .tab.combat > .grid.grid-3col {
-  margin: 0;
-  gap: 10px;
-}
-
-form.tlgcc.character .sidebar .resource-pool h4 {
-  margin: 0;
-  font-size: 15px;
-}
-
-form.tlgcc.character .sidebar hr {
-  margin: 4px 0 6px;
-}
-
-form.tlgcc.character .sidebar .ability {
-  margin-bottom: 2px;
-}
-
-form.tlgcc.character .abilitybox {
-  min-height: 104px;
-  padding: 8px 7px 7px;
-  gap: 4px;
-}
-
-form.tlgcc.character .ability-label {
-  font-size: 24px;
-  line-height: 1;
-}
-
-form.tlgcc.character .abilitybox > span.abilityscore {
-  gap: 4px;
-}
-
-form.tlgcc.character .abilitybox > span.abilityscore input,
-form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
-  font-size: 15px;
-}
-
-form.tlgcc.character .abilitybox > span.abilityscore .ability-mod {
-  min-width: 28px;
-  padding: 1px 2px;
-}
-
-form.tlgcc.character .abilitybox > span.ability-prime-row {
-  gap: 3px;
-  font-size: 14px;
-}
-
-form.tlgcc.character .items-list .items-header {
-  background: rgba(255, 250, 238, 0.2);
-}
-
-form.tlgcc.character .items-list .item {
-  padding: 0 1px;
-}
-
 /* Item sheet parity pass: match the actor parchment/light-field treatment. */
 form.tlgcc.item {
   color: #221c16;
@@ -1653,6 +1517,335 @@ form.tlgcc.item .description-editor .editor-container {
 form.tlgcc.item .description-editor .editor .editor-content {
   min-height: 12rem;
   padding: 0 0.45rem;
+}
+
+/* Unit sheet: compact Fields of Battle stat-card layout. */
+form.tlgcc.actor.unit {
+  color: #231c14;
+}
+
+form.tlgcc.actor.unit .sheet-header.unit-header {
+  margin-bottom: 4px;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+form.tlgcc.actor.unit .sheet-header.unit-header .profile-img {
+  flex: 0 0 92px;
+  width: 92px;
+  height: 92px;
+  margin-right: 8px;
+}
+
+form.tlgcc.actor.unit .sheet-header.unit-header .header-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+form.tlgcc.actor.unit .sheet-header.unit-header h1.charname {
+  height: auto;
+  min-height: 44px;
+  margin: 4px 0;
+}
+
+form.tlgcc.actor.unit .sheet-header.unit-header h1.charname input {
+  min-height: 44px;
+  padding: 3px 10px;
+  font-family: 'Century Gothic', 'TeX Gyre Adventor', 'Soutane', sans-serif, var(--font-primary) !important;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #22180f !important;
+  background: rgba(255, 251, 241, 0.52) !important;
+  border: 1px solid rgba(108, 97, 78, 0.72) !important;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+form.tlgcc.actor.unit .unit-summary-grid {
+  margin: 0;
+  row-gap: 4px;
+  column-gap: 10px;
+  padding: 0 6px 2px;
+}
+
+form.tlgcc.actor.unit .unit-summary-grid .resource {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2px;
+  min-width: 0;
+  margin: 0 2px;
+  padding: 0 2px;
+}
+
+form.tlgcc.actor.unit .unit-summary-grid .resource-content {
+  gap: 6px;
+}
+
+form.tlgcc.actor.unit .unit-summary-grid .resource-content input,
+form.tlgcc.actor.unit .unit-summary-grid .resource > input {
+  min-height: 32px;
+  width: 100%;
+  min-width: 0;
+}
+
+form.tlgcc.actor.unit .sheet-tabs {
+  margin-top: 2px;
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+form.tlgcc.actor.unit .sheet-tabs .item {
+  color: #5a2e21;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+form.tlgcc.actor.unit .sheet-tabs .item.active {
+  color: #7b231c;
+  text-shadow: none;
+}
+
+form.tlgcc.actor.unit .sheet-body {
+  padding: 0 6px 6px;
+}
+
+form.tlgcc.actor.unit input,
+form.tlgcc.actor.unit textarea,
+form.tlgcc.actor.unit select {
+  color: #241a12 !important;
+  background: rgba(255, 250, 238, 0.44) !important;
+  border: 1px solid rgba(113, 101, 84, 0.78) !important;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
+}
+
+form.tlgcc.actor.unit input::placeholder,
+form.tlgcc.actor.unit textarea::placeholder {
+  color: rgba(70, 57, 43, 0.58) !important;
+}
+
+form.tlgcc.actor.unit .resource-label,
+form.tlgcc.actor.unit .unit-field > label,
+form.tlgcc.actor.unit .unit-text-block > label {
+  color: #2f261d;
+  font-size: 16px;
+  line-height: 1.05;
+  margin: 0 0 2px;
+}
+
+form.tlgcc.actor.unit .unit-action-grid,
+form.tlgcc.actor.unit .unit-secondary-grid,
+form.tlgcc.actor.unit .unit-traits-grid {
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+form.tlgcc.actor.unit .unit-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: rgba(255, 250, 238, 0.18);
+  border: 1px solid rgba(184, 170, 144, 0.82);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+form.tlgcc.actor.unit .unit-card-header {
+  padding: 7px 10px 6px;
+  border-bottom: 1px solid rgba(184, 170, 144, 0.7);
+  background: rgba(255, 250, 238, 0.18);
+}
+
+form.tlgcc.actor.unit .unit-card-header h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.05;
+  color: #3a2319;
+  text-transform: none;
+}
+
+form.tlgcc.actor.unit .unit-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 10px 10px;
+}
+
+form.tlgcc.actor.unit .unit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+form.tlgcc.actor.unit .unit-field-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.8fr);
+  gap: 8px 10px;
+  align-items: start;
+}
+
+form.tlgcc.actor.unit .unit-field-span-2 {
+  grid-column: span 2;
+}
+
+form.tlgcc.actor.unit .unit-field input,
+form.tlgcc.actor.unit .unit-field textarea,
+form.tlgcc.actor.unit .unit-text-block textarea {
+  width: 100%;
+  min-width: 0;
+}
+
+form.tlgcc.actor.unit .unit-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 2px;
+  border-top: 1px solid rgba(184, 170, 144, 0.55);
+}
+
+form.tlgcc.actor.unit .unit-readout {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  padding: 2px 0 6px;
+  color: #2f261d;
+}
+
+form.tlgcc.actor.unit .unit-readout-label {
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+form.tlgcc.actor.unit .unit-readout-value {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  color: #5a2e21;
+}
+
+form.tlgcc.actor.unit .unit-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  min-width: 120px;
+  padding: 4px 12px;
+  color: #5a2e21;
+  background: rgba(255, 250, 238, 0.5);
+  border: 1px solid rgba(120, 104, 80, 0.78);
+  border-radius: 3px;
+  line-height: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+form.tlgcc.actor.unit .unit-action-button:hover,
+form.tlgcc.actor.unit .unit-action-button:focus {
+  color: #6f2018;
+  background: rgba(255, 250, 238, 0.68);
+  text-shadow: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+form.tlgcc.actor.unit .unit-notes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form.tlgcc.actor.unit .unit-combat-notes {
+  margin: 0 0 12px;
+}
+
+form.tlgcc.actor.unit .unit-notes-grid {
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+form.tlgcc.actor.unit .unit-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+form.tlgcc.actor.unit .unit-card textarea,
+form.tlgcc.actor.unit .unit-notes-stack textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+form.tlgcc.actor.unit .unit-card .description-header,
+form.tlgcc.actor.unit .unit-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+form.tlgcc.actor.unit .unit-notes-stack .description-editor {
+  min-height: 14rem;
+}
+
+form.tlgcc.actor.unit .unit-notes-stack .description-editor .editor,
+form.tlgcc.actor.unit .unit-notes-stack .description-editor .editor-container,
+form.tlgcc.actor.unit .unit-notes-stack .description-editor prose-mirror,
+form.tlgcc.actor.unit .unit-notes-stack .description-editor .sheet-description-prosemirror {
+  min-height: 14rem;
+  background: rgba(255, 250, 238, 0.3);
+  border-radius: 3px;
+}
+
+form.tlgcc.actor.unit .unit-notes-stack .description-editor .editor .editor-content {
+  min-height: 12rem;
+  padding: 0 0.45rem;
+}
+
+form.tlgcc.actor.unit .unit-secondary-grid .unit-card:first-child .unit-card-body {
+  justify-content: space-between;
+}
+
+form.tlgcc.actor.unit .unit-summary-size {
+  grid-column: span 2;
+}
+
+form.tlgcc.actor.unit .unit-summary-uhp {
+  grid-column: span 2;
+}
+
+@media (max-width: 760px) {
+  form.tlgcc.actor.unit .unit-action-grid,
+  form.tlgcc.actor.unit .unit-secondary-grid,
+  form.tlgcc.actor.unit .unit-traits-grid,
+  form.tlgcc.actor.unit .unit-notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  form.tlgcc.actor.unit .unit-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  form.tlgcc.actor.unit .unit-field-span-2 {
+    grid-column: span 1;
+  }
+
+  form.tlgcc.actor.unit .unit-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  form.tlgcc.actor.unit .unit-summary-size,
+  form.tlgcc.actor.unit .unit-summary-uhp {
+    grid-column: span 2;
+  }
 }
 .tlgbackground {
 background: url('/systems/castles-and-crusades/assets/tlg_watermark.webp');

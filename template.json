@@ -2,7 +2,8 @@
   "Actor": {
     "types": [
       "character",
-      "monster"
+      "monster",
+      "unit"
     ],
     "templates": {
       "base": {
@@ -236,6 +237,80 @@
         "value": 0,
         "label": "TLGCC.ExperiencePoints",
         "abbr": "TLGCC.ExperiencePointsAbbr"
+      }
+    },
+    "unit": {
+      "templates": [
+        "base"
+      ],
+      "unitType": {
+        "value": "",
+        "label": "TLGCC.UnitType"
+      },
+      "sizeRatio": {
+        "value": "",
+        "label": "TLGCC.UnitSizeRatio"
+      },
+      "level": {
+        "value": "",
+        "label": "TLGCC.Level"
+      },
+      "uhp": {
+        "value": 0,
+        "max": 0,
+        "label": "TLGCC.UnitUHP"
+      },
+      "armorNotes": {
+        "value": "",
+        "label": "TLGCC.UnitArmorNotes"
+      },
+      "mainAttack": {
+        "name": "",
+        "damage": "",
+        "range": "",
+        "bonus": 0
+      },
+      "formationAttack": {
+        "name": "",
+        "damage": "",
+        "range": "",
+        "bonus": 0
+      },
+      "special": {
+        "value": "",
+        "label": "TLGCC.SpecialAbility"
+      },
+      "weaponInitiative": {
+        "value": "",
+        "label": "TLGCC.UnitWeaponInitiative"
+      },
+      "savesPrimes": {
+        "value": "",
+        "label": "TLGCC.UnitSavesPrimes"
+      },
+      "face": {
+        "value": "",
+        "label": "TLGCC.UnitFace"
+      },
+      "morale": {
+        "value": 0,
+        "label": "TLGCC.UnitMorale"
+      },
+      "spells": {
+        "value": "",
+        "label": "TLGCC.UnitSpells"
+      },
+      "commander": {
+        "value": "",
+        "label": "TLGCC.UnitCommander"
+      },
+      "squadCount": {
+        "value": 0,
+        "label": "TLGCC.UnitSquadCount"
+      },
+      "notes": {
+        "value": "",
+        "label": "TLGCC.Notes"
       }
     }
   },

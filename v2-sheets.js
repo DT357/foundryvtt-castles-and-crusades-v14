@@ -9,7 +9,7 @@ const FoundryTextEditor = TextEditorNamespace.implementation;
 const SYSTEM_ID = "castles-and-crusades";
 const DEFAULT_ITEM_IMAGE = "icons/svg/item-bag.svg";
 const ITEM_TYPES = ["item", "weapon", "armor", "spell", "feature"];
-const ACTOR_TYPES = ["character", "monster"];
+const ACTOR_TYPES = ["character", "monster", "unit"];
 
 function getRollMode() {
   return game.settings.get("core", "rollMode");
@@ -36,8 +36,36 @@ function unregisterScopedSheets(documentConfig, documentClass, supportedTypes) {
   }
 }
 
+function captureScrollState(rootElement, selectors = [".sheet-body"]) {
+  if (!rootElement) return [];
+
+  return selectors.flatMap((selector) => {
+    return Array.from(rootElement.querySelectorAll(selector)).map((element, index) => ({
+      selector,
+      index,
+      top: element.scrollTop,
+      left: element.scrollLeft,
+    }));
+  });
+}
+
+function restoreScrollState(rootElement, scrollState = []) {
+  if (!rootElement || !scrollState.length) return;
+
+  requestAnimationFrame(() => {
+    for (const state of scrollState) {
+      const elements = rootElement.querySelectorAll(state.selector);
+      const element = elements[state.index];
+      if (!element) continue;
+      element.scrollTop = state.top;
+      element.scrollLeft = state.left;
+    }
+  });
+}
+
 class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
   editingDescriptionTarget = null;
+  pendingScrollState = [];
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     classes: ["tlgcc", "sheet", "actor"],
@@ -133,6 +161,8 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
       await this.#prepareCharacterData(context);
     } else if (actorData.type === "monster") {
       await this.#prepareMonsterData(context);
+    } else if (actorData.type === "unit") {
+      await this.#prepareUnitData(context);
     }
 
     if (this.editingDescriptionTarget) {
@@ -159,6 +189,7 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     this.#bindSheetInteractions(htmlElement);
     this.#bindDescriptionEditorLifecycle(htmlElement);
     this.#activatePrimaryTab(htmlElement, this.tabGroups.primary ?? "combat");
+    this.#restorePendingScrollState(htmlElement);
   }
 
   #bindSheetInteractions(htmlElement) {
@@ -233,9 +264,30 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     await this.#prepareEnrichedText(context, "biography", "system.biography");
   }
 
+  async #prepareUnitData(context) {
+    const system = context.system;
+    context.unitFlags = {
+      hasMainAttack: Boolean(system.mainAttack?.name || system.mainAttack?.damage || system.mainAttack?.bonus),
+      hasFormationAttack: Boolean(
+        system.formationAttack?.name || system.formationAttack?.damage || system.formationAttack?.bonus
+      ),
+      hasSpecial: Boolean(system.special?.value),
+      hasSpells: Boolean(system.spells?.value),
+      hasNotes: Boolean(system.notes?.value),
+    };
+    context.unitActions = {
+      mainAttackRoll: this.#buildBonusRollFormula(system.mainAttack?.bonus),
+      formationAttackRoll: this.#buildBonusRollFormula(system.formationAttack?.bonus),
+      moraleRoll: this.#buildBonusRollFormula(system.morale?.value),
+    };
+    await this.#prepareEnrichedText(context, "unitSpells", "system.spells.value");
+    await this.#prepareEnrichedText(context, "unitNotes", "system.notes.value");
+    await this.#prepareEnrichedText(context, "biography", "system.biography");
+  }
+
   async #prepareEnrichedText(context, contextKey, fieldName) {
     context.enriched[contextKey] = await FoundryTextEditor.enrichHTML(
-      foundry.utils.getProperty(context.system, contextKey) ?? "",
+      foundry.utils.getProperty(this.actor._source, fieldName) ?? "",
       {
         async: true,
         documents: true,
@@ -367,6 +419,12 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
     if (range.includes("ft") && !range.includes("thrown")) return "ranged";
     return "melee";
+  }
+
+  #buildBonusRollFormula(bonus) {
+    const parsedBonus = Number.parseInt(`${bonus ?? 0}`, 10);
+    if (!Number.isFinite(parsedBonus) || parsedBonus === 0) return "1d20";
+    return parsedBonus > 0 ? `1d20 + ${parsedBonus}` : `1d20 - ${Math.abs(parsedBonus)}`;
   }
 
   #getCssClass(sheetType) {
@@ -699,6 +757,7 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const target = event.currentTarget?.dataset?.target;
     if (!target) return;
+    this.#capturePendingScrollState();
     this.editingDescriptionTarget = target;
     this.render();
   };
@@ -710,15 +769,28 @@ class TlgccActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
       if (editor.dataset.tlgccSaveBound === "true") return;
       editor.dataset.tlgccSaveBound = "true";
       editor.addEventListener("save", () => {
+        this.#capturePendingScrollState();
         this.editingDescriptionTarget = null;
         this.render();
       }, { once: true });
     });
   }
+
+  #capturePendingScrollState() {
+    const rootElement = this.form ?? this.element;
+    this.pendingScrollState = captureScrollState(rootElement);
+  }
+
+  #restorePendingScrollState(rootElement) {
+    if (!this.pendingScrollState.length) return;
+    restoreScrollState(rootElement, this.pendingScrollState);
+    this.pendingScrollState = [];
+  }
 }
 
 class TlgccItemSheetV2 extends HandlebarsApplicationMixin(ItemSheetV2) {
   editingDescriptionTarget = null;
+  pendingScrollState = [];
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     classes: ["tlgcc", "sheet", "item"],
@@ -818,6 +890,7 @@ class TlgccItemSheetV2 extends HandlebarsApplicationMixin(ItemSheetV2) {
     const form = this.form;
     if (!form) return;
     this.#bindDescriptionEditorLifecycle(form);
+    this.#restorePendingScrollState(form);
 
     if (this.isEditable) {
       form.querySelectorAll(".editor-edit[data-target]").forEach((element) => {
@@ -860,6 +933,7 @@ class TlgccItemSheetV2 extends HandlebarsApplicationMixin(ItemSheetV2) {
     event.preventDefault();
     const target = event.currentTarget?.dataset?.target;
     if (!target) return;
+    this.#capturePendingScrollState();
     this.editingDescriptionTarget = target;
     this.render();
   };
@@ -871,10 +945,22 @@ class TlgccItemSheetV2 extends HandlebarsApplicationMixin(ItemSheetV2) {
       if (editor.dataset.tlgccSaveBound === "true") return;
       editor.dataset.tlgccSaveBound = "true";
       editor.addEventListener("save", () => {
+        this.#capturePendingScrollState();
         this.editingDescriptionTarget = null;
         this.render();
       }, { once: true });
     });
+  }
+
+  #capturePendingScrollState() {
+    const rootElement = this.form ?? this.element;
+    this.pendingScrollState = captureScrollState(rootElement);
+  }
+
+  #restorePendingScrollState(rootElement) {
+    if (!this.pendingScrollState.length) return;
+    restoreScrollState(rootElement, this.pendingScrollState);
+    this.pendingScrollState = [];
   }
 }
 

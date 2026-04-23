@@ -1,0 +1,302 @@
+<form class="{{cssClass}} {{actor.type}} tlgbackground flexcol" autocomplete="off">
+  <header class="sheet-header unit-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'TLGCC.Name'}}"/>
+      </h1>
+
+      <section class="resources unit-summary-grid grid grid-6col">
+        <div class="resource flex-group-center grid-span-2 unit-summary-size">
+          <label class="resource-label">{{localize 'TLGCC.UnitSizeRatio'}}</label>
+          <input type="text" name="system.sizeRatio.value" value="{{system.sizeRatio.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center unit-summary-level">
+          <label class="resource-label">{{localize 'TLGCC.Level'}}</label>
+          <input type="text" name="system.level.value" value="{{system.level.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center unit-summary-move">
+          <label class="resource-label">{{localize 'TLGCC.Movement'}}</label>
+          <input type="text" name="system.move.value" value="{{system.move.value}}" data-dtype="String"/>
+        </div>
+
+        <div class="resource flex-group-center unit-summary-morale">
+          <label class="resource-label">{{localize 'TLGCC.UnitMorale'}}</label>
+          <input type="number" step="1" name="system.morale.value" value="{{system.morale.value}}" data-dtype="Number"/>
+        </div>
+
+        <div class="resource flex-group-center unit-summary-ac">
+          <label class="resource-label">{{localize 'TLGCC.ArmorClassAbbr'}}</label>
+          <input type="text" name="system.armorClass.value" value="{{system.armorClass.value}}" data-dtype="Number"/>
+        </div>
+
+        <div class="resource flex-group-center grid-span-2 unit-summary-uhp">
+          <label class="resource-label">{{localize 'TLGCC.UnitUHP'}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.uhp.value" value="{{system.uhp.value}}" data-dtype="Number"/>
+            <span class="flexshrink flex-align-center">&nbsp;/&nbsp;</span>
+            <input type="text" name="system.uhp.max" value="{{system.uhp.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center unit-summary-squads">
+          <label class="resource-label">{{localize 'TLGCC.UnitSquadCount'}}</label>
+          <input type="text" name="system.squadCount.value" value="{{system.squadCount.value}}" data-dtype="Number"/>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="combat">{{localize 'TLGCC.UnitCombatTab'}}</a>
+    <a class="item" data-tab="traits">{{localize 'TLGCC.UnitTraitsTab'}}</a>
+    <a class="item" data-tab="notes">{{localize 'TLGCC.UnitNotesTab'}}</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab combat" data-group="primary" data-tab="combat">
+      <section class="unit-action-grid grid grid-2col">
+        <article class="unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.UnitMainAttack'}}</h2>
+          </header>
+          <div class="unit-card-body">
+            <div class="unit-field-grid">
+              <div class="unit-field unit-field-span-2">
+                <label>{{localize 'TLGCC.UnitAttackName'}}</label>
+                <input type="text" name="system.mainAttack.name" value="{{system.mainAttack.name}}" data-dtype="String"/>
+              </div>
+              <div class="unit-field">
+                <label>{{localize 'TLGCC.Damage'}}</label>
+                <input type="text" name="system.mainAttack.damage" value="{{system.mainAttack.damage}}" data-dtype="String"/>
+              </div>
+              <div class="unit-field">
+                <label>{{localize 'TLGCC.AttackBonus'}}</label>
+                <input type="text" name="system.mainAttack.bonus" value="{{system.mainAttack.bonus}}" data-dtype="Number"/>
+              </div>
+              <div class="unit-field unit-field-span-2">
+                <label>{{localize 'TLGCC.UnitAttackRange'}}</label>
+                <input type="text" name="system.mainAttack.range" value="{{system.mainAttack.range}}" data-dtype="String"/>
+              </div>
+            </div>
+            <div class="unit-action-row">
+              <a class="rollable unit-action-button" data-roll="{{unitActions.mainAttackRoll}}" data-label="<b>{{localize 'TLGCC.UnitMainAttack'}}</b> &rarr; {{actor.name}}">
+                {{localize 'TLGCC.UnitAttackRoll'}}
+              </a>
+              {{#if system.mainAttack.damage}}
+                <a class="rollable unit-action-button" data-roll="{{system.mainAttack.damage}}" data-label="<b>{{localize 'TLGCC.UnitMainAttack'}}</b> {{localize 'TLGCC.Damage'}} &rarr; {{system.mainAttack.name}}">
+                  {{localize 'TLGCC.UnitDamageRoll'}}
+                </a>
+              {{/if}}
+            </div>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.UnitFormationAttack'}}</h2>
+          </header>
+          <div class="unit-card-body">
+            <div class="unit-field-grid">
+              <div class="unit-field unit-field-span-2">
+                <label>{{localize 'TLGCC.UnitAttackName'}}</label>
+                <input type="text" name="system.formationAttack.name" value="{{system.formationAttack.name}}" data-dtype="String"/>
+              </div>
+              <div class="unit-field">
+                <label>{{localize 'TLGCC.Damage'}}</label>
+                <input type="text" name="system.formationAttack.damage" value="{{system.formationAttack.damage}}" data-dtype="String"/>
+              </div>
+              <div class="unit-field">
+                <label>{{localize 'TLGCC.AttackBonus'}}</label>
+                <input type="text" name="system.formationAttack.bonus" value="{{system.formationAttack.bonus}}" data-dtype="Number"/>
+              </div>
+              <div class="unit-field unit-field-span-2">
+                <label>{{localize 'TLGCC.UnitAttackRange'}}</label>
+                <input type="text" name="system.formationAttack.range" value="{{system.formationAttack.range}}" data-dtype="String"/>
+              </div>
+            </div>
+            <div class="unit-action-row">
+              <a class="rollable unit-action-button" data-roll="{{unitActions.formationAttackRoll}}" data-label="<b>{{localize 'TLGCC.UnitFormationAttack'}}</b> &rarr; {{actor.name}}">
+                {{localize 'TLGCC.UnitAttackRoll'}}
+              </a>
+              {{#if system.formationAttack.damage}}
+                <a class="rollable unit-action-button" data-roll="{{system.formationAttack.damage}}" data-label="<b>{{localize 'TLGCC.UnitFormationAttack'}}</b> {{localize 'TLGCC.Damage'}} &rarr; {{system.formationAttack.name}}">
+                  {{localize 'TLGCC.UnitDamageRoll'}}
+                </a>
+              {{/if}}
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="unit-secondary-grid grid grid-2col">
+        <article class="unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.UnitMorale'}}</h2>
+          </header>
+          <div class="unit-card-body">
+            <p class="unit-readout">
+              <span class="unit-readout-label">{{localize 'TLGCC.UnitMoraleModifier'}}</span>
+              <span class="unit-readout-value">{{numberFormat system.morale.value decimals=0 sign=true}}</span>
+            </p>
+            <div class="unit-action-row">
+              <a class="rollable unit-action-button" data-roll="{{unitActions.moraleRoll}}" data-label="<b>{{localize 'TLGCC.UnitMoraleCheck'}}</b> &rarr; {{actor.name}}">
+                {{localize 'TLGCC.UnitMoraleCheck'}}
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.SpecialAbility'}}</h2>
+          </header>
+          <div class="unit-card-body">
+            <textarea name="system.special.value" rows="6" data-dtype="String">{{system.special.value}}</textarea>
+          </div>
+        </article>
+      </section>
+
+      <section class="unit-combat-notes">
+        <article class="unit-text-block unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.UnitSpells'}}</h2>
+            {{#ifeq editingDescription.target "system.spells.value"}}
+            {{else}}
+              {{#if editable}}
+                <button
+                  type="button"
+                  class="editor-edit control-button unbutton"
+                  data-target="system.spells.value"
+                  aria-label="{{localize 'TLGCC.UnitSpells'}}"
+                >
+                  <i class="fa-solid fa-pen-to-square" inert></i>
+                </button>
+              {{/if}}
+            {{/ifeq}}
+          </header>
+          <div class="unit-card-body">
+            <div class="description-editor">
+              {{#ifeq editingDescription.target "system.spells.value"}}
+                <prose-mirror
+                  name="{{editingDescription.target}}"
+                  value="{{editingDescription.value}}"
+                  document-uuid="{{actor.uuid}}"
+                  class="sheet-description-prosemirror"
+                ></prose-mirror>
+              {{else}}
+                <div class="editor">
+                  <div class="editor-content">{{{enriched.unitSpells}}}</div>
+                </div>
+              {{/ifeq}}
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <div class="tab traits" data-group="primary" data-tab="traits" hidden style="display: none;">
+      <section class="unit-traits-grid grid grid-2col">
+        <div class="unit-field">
+          <label>{{localize 'TLGCC.UnitType'}}</label>
+          <input type="text" name="system.unitType.value" value="{{system.unitType.value}}" data-dtype="String"/>
+        </div>
+        <div class="unit-field">
+          <label>{{localize 'TLGCC.UnitCommander'}}</label>
+          <input type="text" name="system.commander.value" value="{{system.commander.value}}" data-dtype="String"/>
+        </div>
+        <div class="unit-field">
+          <label>{{localize 'TLGCC.UnitWeaponInitiative'}}</label>
+          <input type="text" name="system.weaponInitiative.value" value="{{system.weaponInitiative.value}}" data-dtype="String"/>
+        </div>
+        <div class="unit-field">
+          <label>{{localize 'TLGCC.UnitSavesPrimes'}}</label>
+          <input type="text" name="system.savesPrimes.value" value="{{system.savesPrimes.value}}" data-dtype="String"/>
+        </div>
+        <div class="unit-field">
+          <label>{{localize 'TLGCC.UnitFace'}}</label>
+          <input type="text" name="system.face.value" value="{{system.face.value}}" data-dtype="String"/>
+        </div>
+        <div class="unit-field">
+          <label>{{localize 'TLGCC.UnitArmorNotes'}}</label>
+          <input type="text" name="system.armorNotes.value" value="{{system.armorNotes.value}}" data-dtype="String"/>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab notes" data-group="primary" data-tab="notes" hidden style="display: none;">
+      <section class="unit-notes-grid grid grid-2col">
+        <article class="unit-text-block unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.Notes'}}</h2>
+            {{#ifeq editingDescription.target "system.notes.value"}}
+            {{else}}
+              {{#if editable}}
+                <button
+                  type="button"
+                  class="editor-edit control-button unbutton"
+                  data-target="system.notes.value"
+                  aria-label="{{localize 'TLGCC.Notes'}}"
+                >
+                  <i class="fa-solid fa-pen-to-square" inert></i>
+                </button>
+              {{/if}}
+            {{/ifeq}}
+          </header>
+          <div class="unit-card-body">
+            <div class="description-editor">
+              {{#ifeq editingDescription.target "system.notes.value"}}
+                <prose-mirror
+                  name="{{editingDescription.target}}"
+                  value="{{editingDescription.value}}"
+                  document-uuid="{{actor.uuid}}"
+                  class="sheet-description-prosemirror"
+                ></prose-mirror>
+              {{else}}
+                <div class="editor">
+                  <div class="editor-content">{{{enriched.unitNotes}}}</div>
+                </div>
+              {{/ifeq}}
+            </div>
+          </div>
+        </article>
+        <article class="unit-text-block unit-card">
+          <header class="unit-card-header">
+            <h2>{{localize 'TLGCC.Appearance'}}</h2>
+            {{#ifeq editingDescription.target "system.biography"}}
+            {{else}}
+              {{#if editable}}
+                <button
+                  type="button"
+                  class="editor-edit control-button unbutton"
+                  data-target="system.biography"
+                  aria-label="{{localize 'TLGCC.Appearance'}}"
+                >
+                  <i class="fa-solid fa-pen-to-square" inert></i>
+                </button>
+              {{/if}}
+            {{/ifeq}}
+          </header>
+          <div class="unit-card-body">
+            <div class="description-editor">
+              {{#ifeq editingDescription.target "system.biography"}}
+                <prose-mirror
+                  name="{{editingDescription.target}}"
+                  value="{{editingDescription.value}}"
+                  document-uuid="{{actor.uuid}}"
+                  class="sheet-description-prosemirror"
+                ></prose-mirror>
+              {{else}}
+                <div class="editor">
+                  <div class="editor-content">{{{enriched.biography}}}</div>
+                </div>
+              {{/ifeq}}
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </section>
+</form>
